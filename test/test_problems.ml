@@ -20,11 +20,31 @@ let test_at _ =
   assert_equal (Some 'b') (Problems.at 1 ['a'; 'b'; 'c'])
 
 
+let test_length _ =
+  assert_equal 0 (Problems.length []);
+  assert_equal 3 (Problems.length ["a"; "b"; "c"]);
+  assert_equal 100 (Problems.length (List.init 100 Fun.id))
+
+
+let test_rev _ =
+  assert_equal [] (Problems.rev []);
+  assert_equal ["c"; "b"; "a"] (Problems.rev ["a"; "b"; "c"])
+
+
+let test_is_palindrome _ =
+  assert_equal true (Problems.is_palindrome []);
+  assert_equal false (Problems.is_palindrome ['a'; 'b'; 'c']);
+  assert_equal true (Problems.is_palindrome [9; 8; 7; 8; 9])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
     "test_last_two" >:: test_last_two;
-    "test_at" >:: test_at
+    "test_at" >:: test_at;
+    "test_length" >:: test_length;
+    "test_rev" >:: test_rev;
+    "test_is_palindrome" >:: test_is_palindrome
   ]
 
 let () =

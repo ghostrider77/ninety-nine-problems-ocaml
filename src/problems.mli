@@ -8,3 +8,15 @@ val last_two : 'a list -> ('a * 'a) option
 
 val at : int -> 'a list -> 'a option
 (** Finds the nth element of a list.*)
+
+
+val length : 'a list -> int
+(** Calculates the length of a list.*)
+
+
+val rev : 'a list -> 'a list
+(** Reverses a list.*)
+
+
+val is_palindrome : 'a list -> bool
+(** Find out whether a list is a palindrome.*)
