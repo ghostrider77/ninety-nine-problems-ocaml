@@ -58,3 +58,14 @@ let compress = function
             if h = current_elt then aux acc current_elt tl
             else aux (h :: acc) h tl in
       aux [x] x xs
+
+
+let pack = function
+  | [] -> []
+  | x :: xs ->
+      let rec aux acc elts current_elt = function
+        | [] -> List.rev (elts :: acc)
+        | h :: tl ->
+            if h = current_elt then aux acc (h :: elts) current_elt tl
+            else aux (elts :: acc) [h] h tl in
+      aux [] [x] x xs

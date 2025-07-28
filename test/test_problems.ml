@@ -42,7 +42,7 @@ let test_is_palindrome _ =
 let test_flatten _ =
   assert_equal [] (Problems.flatten []);
   assert_equal [1; 2] (Problems.flatten [One 1; One 2]);
-  assert_equal ["a"; "b"; "c"; "d"; "e"] (Problems.flatten [One "a"; Many [One "b"; Many [One "c" ;One "d"]; One "e"]])
+  assert_equal ["a"; "b"; "c"; "d"; "e"] (Problems.flatten [One "a"; Many [One "b"; Many [One "c"; One "d"]; One "e"]])
 
 
 let test_compress _ =
@@ -51,6 +51,14 @@ let test_compress _ =
   assert_equal ['a'; 'b'; 'c'] (Problems.compress ['a'; 'b'; 'b'; 'b'; 'c']);
   assert_equal ["a"; "b"; "c"; "a"; "d"; "e"]
     (Problems.compress ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"])
+
+
+let test_pack _ =
+  assert_equal [] (Problems.pack []);
+  assert_equal [[1]; [2]; [3]] (Problems.pack [1; 2; 3]);
+  assert_equal [[1; 1; 1]] (Problems.pack [1; 1; 1]);
+  assert_equal [["a"; "a"; "a"; "a"]; ["b"]; ["c"; "c"]; ["a"; "a"]; ["d"; "d"]; ["e"; "e"; "e"; "e"]]
+    (Problems.pack ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "d"; "e"; "e"; "e"; "e"])
 
 
 let suite =
@@ -63,7 +71,9 @@ let suite =
     "test_is_palindrome" >:: test_is_palindrome;
     "test_flatten" >:: test_flatten;
     "test_compress" >:: test_compress;
+    "test_pack" >:: test_pack;
   ]
+
 
 let () =
   run_test_tt_main suite

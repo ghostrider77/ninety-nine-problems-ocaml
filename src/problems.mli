@@ -30,3 +30,7 @@ val flatten : 'a node list -> 'a list
 
 val compress : 'a list -> 'a list
 (** Eliminates consecutive duplicates of list elements. *)
+
+
+val pack : 'a list -> 'a list list
+(** Packs consecutive duplicates of list elements into sublists. *)
