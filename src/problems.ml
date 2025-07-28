@@ -1,3 +1,5 @@
+open Types
+
 let rec last = function
   | [] -> None
   | [x] -> Some x
@@ -35,3 +37,13 @@ let rev xs =
 
 let is_palindrome xs =
   List.rev xs = xs
+
+
+let flatten xs =
+  let rec aux acc = function
+    | [] -> acc
+    | h :: tl ->
+        match h with
+          | One elt -> aux (elt :: acc) tl
+          | Many elts -> aux (aux acc elts) tl in
+  List.rev (aux [] xs)

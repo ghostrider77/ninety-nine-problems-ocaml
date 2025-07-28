@@ -1,3 +1,5 @@
+open Ninety_nine_ocaml
+open Ninety_nine_ocaml.Types
 open OUnit2
 
 
@@ -37,6 +39,12 @@ let test_is_palindrome _ =
   assert_equal true (Problems.is_palindrome [9; 8; 7; 8; 9])
 
 
+let test_flatten _ =
+  assert_equal [] (Problems.flatten []);
+  assert_equal [1; 2] (Problems.flatten [One 1; One 2]);
+  assert_equal ["a"; "b"; "c"; "d"; "e"] (Problems.flatten [One "a"; Many [One "b"; Many [One "c" ;One "d"]; One "e"]])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -44,7 +52,8 @@ let suite =
     "test_at" >:: test_at;
     "test_length" >:: test_length;
     "test_rev" >:: test_rev;
-    "test_is_palindrome" >:: test_is_palindrome
+    "test_is_palindrome" >:: test_is_palindrome;
+    "test_flatten" >:: test_flatten
   ]
 
 let () =

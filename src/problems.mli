@@ -1,3 +1,5 @@
+open Types
+
 val last : 'a list -> 'a option
 (** Returns the last element of a list *)
 
@@ -19,4 +21,8 @@ val rev : 'a list -> 'a list
 
 
 val is_palindrome : 'a list -> bool
-(** Find out whether a list is a palindrome.*)
+(** Finds out whether a list is a palindrome.*)
+
+
+val flatten : 'a node list -> 'a list
+(** Flattens a nested list structure.*)

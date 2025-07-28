@@ -1,2 +1,3 @@
 (library
- (name problems))
+ (name ninety_nine_ocaml)
+ (modules problems types))
