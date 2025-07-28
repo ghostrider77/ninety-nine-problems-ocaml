@@ -1,6 +1,7 @@
+open OUnit2
+
 open Ninety_nine_ocaml
 open Ninety_nine_ocaml.Types
-open OUnit2
 
 
 let test_last _ =
@@ -61,6 +62,31 @@ let test_pack _ =
     (Problems.pack ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "d"; "e"; "e"; "e"; "e"])
 
 
+let test_encode _ =
+  assert_equal [] (Problems.encode []);
+  assert_equal [(1, 'a'); (1, 'b'); (1, 'c')] (Problems.encode ['a'; 'b'; 'c']);
+  assert_equal [(4, "a"); (1, "b"); (2, "c"); (2, "a"); (1, "d"); (4, "e")]
+    (Problems.encode ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"])
+
+
+let test_encode2 _ =
+  assert_equal [] (Problems.encode2 []);
+  assert_equal [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")]
+    (Problems.encode2 ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"])
+
+
+let test_decode _ =
+  assert_equal [] (Problems.decode []);
+  assert_equal ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"]
+    (Problems.decode [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")])
+
+
+let test_encode3 _ =
+  assert_equal [] (Problems.encode3 []);
+  assert_equal [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")]
+    (Problems.encode3 ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -72,6 +98,10 @@ let suite =
     "test_flatten" >:: test_flatten;
     "test_compress" >:: test_compress;
     "test_pack" >:: test_pack;
+    "test_encode" >:: test_encode;
+    "test_encode2" >:: test_encode2;
+    "test_decode" >:: test_decode;
+    "test_encode3" >:: test_encode3;
   ]
 
 

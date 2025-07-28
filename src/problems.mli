@@ -34,3 +34,19 @@ val compress : 'a list -> 'a list
 
 val pack : 'a list -> 'a list list
 (** Packs consecutive duplicates of list elements into sublists. *)
+
+
+val encode : 'a list -> (int * 'a) list
+(** Perform run-length encoding. *)
+
+
+val encode2 : 'a list -> 'a rle list
+(** Perform run-length encoding. Only elements with duplicates are transferred as (count, element) lists. *)
+
+
+val decode : 'a rle list -> 'a list
+(** Given a run-length code list generated as specified in the previous problem, constructs its uncompressed version. *)
+
+
+val encode3 : 'a list -> 'a rle list
+(** Perform run-length encoding without the intermediate list of consecutive duplicates. *)
