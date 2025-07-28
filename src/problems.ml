@@ -110,3 +110,11 @@ let encode3 = function
             else if cnt = 1 then aux (One elt :: acc) (1, h) tl
             else aux ((Many (cnt, elt)) :: acc) (1, h) tl in
       aux [] (1, x) xs
+
+
+let duplicate xs =
+  List.concat_map (fun x -> [x; x]) xs
+
+
+let replicate xs n =
+  List.concat_map (fun x -> List.init n (Fun.const x)) xs

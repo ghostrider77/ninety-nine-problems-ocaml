@@ -87,6 +87,16 @@ let test_encode3 _ =
     (Problems.encode3 ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"])
 
 
+let test_duplicate _ =
+  assert_equal [] (Problems.duplicate []);
+  assert_equal [1; 1; 2; 2; 3; 3] (Problems.duplicate [1; 2; 3])
+
+
+let test_replicate _ =
+  assert_equal [] (Problems.replicate [] 10);
+  assert_equal ["a"; "a"; "a"; "b"; "b"; "b"; "c"; "c"; "c"] (Problems.replicate ["a"; "b"; "c"] 3)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -102,6 +112,8 @@ let suite =
     "test_encode2" >:: test_encode2;
     "test_decode" >:: test_decode;
     "test_encode3" >:: test_encode3;
+    "test_duplicate" >:: test_duplicate;
+    "test_replicate" >:: test_replicate;
   ]
 
 

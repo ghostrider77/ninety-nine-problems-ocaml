@@ -50,3 +50,11 @@ val decode : 'a rle list -> 'a list
 
 val encode3 : 'a list -> 'a rle list
 (** Perform run-length encoding without the intermediate list of consecutive duplicates. *)
+
+
+val duplicate : 'a list -> 'a list
+(** Duplicates the elements of a list. *)
+
+
+val replicate : 'a list -> int -> 'a list
+(** Replicates the elements of a list a given number of times. *)
