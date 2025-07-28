@@ -26,3 +26,7 @@ val is_palindrome : 'a list -> bool
 
 val flatten : 'a node list -> 'a list
 (** Flattens a nested list structure.*)
+
+
+val compress : 'a list -> 'a list
+(** Eliminates consecutive duplicates of list elements. *)

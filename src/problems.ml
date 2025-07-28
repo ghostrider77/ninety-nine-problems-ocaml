@@ -47,3 +47,14 @@ let flatten xs =
           | One elt -> aux (elt :: acc) tl
           | Many elts -> aux (aux acc elts) tl in
   List.rev (aux [] xs)
+
+
+let compress = function
+  | [] -> []
+  | x :: xs ->
+      let rec aux acc current_elt = function
+        | [] -> List.rev acc
+        | h :: tl ->
+            if h = current_elt then aux acc current_elt tl
+            else aux (h :: acc) h tl in
+      aux [x] x xs
