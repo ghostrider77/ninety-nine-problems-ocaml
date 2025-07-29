@@ -118,3 +118,7 @@ let duplicate xs =
 
 let replicate xs n =
   List.concat_map (fun x -> List.init n (Fun.const x)) xs
+
+
+let drop xs n =
+  List.filteri (fun ix _ -> (ix + 1) mod n <> 0) xs

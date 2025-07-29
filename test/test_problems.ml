@@ -97,6 +97,12 @@ let test_replicate _ =
   assert_equal ["a"; "a"; "a"; "b"; "b"; "b"; "c"; "c"; "c"] (Problems.replicate ["a"; "b"; "c"] 3)
 
 
+let test_drop _ =
+  assert_equal [] (Problems.drop [] 2);
+  assert_equal [1] (Problems.drop [1; 2] 2);
+  assert_equal ["a"; "b"; "d"; "e"; "g"; "h"; "j"] (Problems.drop ["a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j"] 3)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -114,6 +120,7 @@ let suite =
     "test_encode3" >:: test_encode3;
     "test_duplicate" >:: test_duplicate;
     "test_replicate" >:: test_replicate;
+    "test_drop" >:: test_drop;
   ]
 
 

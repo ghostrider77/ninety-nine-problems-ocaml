@@ -58,3 +58,7 @@ val duplicate : 'a list -> 'a list
 
 val replicate : 'a list -> int -> 'a list
 (** Replicates the elements of a list a given number of times. *)
+
+
+val drop : 'a list -> int -> 'a list
+(** Drops every nth element from a list. *)
