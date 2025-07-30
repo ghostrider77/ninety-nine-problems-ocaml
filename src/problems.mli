@@ -66,3 +66,7 @@ val drop : 'a list -> int -> 'a list
 
 val split : 'a list -> int -> 'a list * 'a list
 (** Splits a list into two parts; the length of the first part is given. *)
+
+
+val slice : 'a list -> int -> int -> 'a list
+(** Given two indices, i and k, the slice is the list containing the elements between the ith and kth element. *)

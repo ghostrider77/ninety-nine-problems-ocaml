@@ -109,6 +109,11 @@ let test_split _ =
   assert_equal ([1; 2; 3], []) (Problems.split [1; 2; 3] 4)
 
 
+let test_slice _ =
+  assert_equal [1] (Problems.slice [1; 2; 3] 0 0);
+  assert_equal ["c"; "d"; "e"; "f"; "g"] (Problems.slice ["a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j"] 2 6)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -128,6 +133,7 @@ let suite =
     "test_replicate" >:: test_replicate;
     "test_drop" >:: test_drop;
     "test_split" >:: test_split;
+    "test_slice" >:: test_slice;
   ]
 
 

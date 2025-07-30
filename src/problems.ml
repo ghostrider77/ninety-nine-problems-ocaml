@@ -132,3 +132,7 @@ let split xs n =
         | [] -> aux acc rest 0
         | h :: tl -> aux (h :: acc) tl (k - 1) in
   aux [] xs n
+
+
+let slice xs i k =
+  List.(xs |> drop i |> take (k - i + 1))
