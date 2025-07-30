@@ -62,3 +62,7 @@ val replicate : 'a list -> int -> 'a list
 
 val drop : 'a list -> int -> 'a list
 (** Drops every nth element from a list. *)
+
+
+val split : 'a list -> int -> 'a list * 'a list
+(** Splits a list into two parts; the length of the first part is given. *)

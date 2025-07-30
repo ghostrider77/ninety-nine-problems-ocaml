@@ -122,3 +122,13 @@ let replicate xs n =
 
 let drop xs n =
   List.filteri (fun ix _ -> (ix + 1) mod n <> 0) xs
+
+
+let split xs n =
+  let rec aux acc rest k =
+    if k <= 0 then (List.rev acc, rest)
+    else
+      match rest with
+        | [] -> aux acc rest 0
+        | h :: tl -> aux (h :: acc) tl (k - 1) in
+  aux [] xs n

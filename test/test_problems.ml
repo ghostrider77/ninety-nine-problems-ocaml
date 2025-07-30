@@ -103,6 +103,12 @@ let test_drop _ =
   assert_equal ["a"; "b"; "d"; "e"; "g"; "h"; "j"] (Problems.drop ["a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j"] 3)
 
 
+let test_split _ =
+  assert_equal ([], [1; 2; 3]) (Problems.split [1; 2; 3] 0);
+  assert_equal ([1; 2], [3]) (Problems.split [1; 2; 3] 2);
+  assert_equal ([1; 2; 3], []) (Problems.split [1; 2; 3] 4)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -121,6 +127,7 @@ let suite =
     "test_duplicate" >:: test_duplicate;
     "test_replicate" >:: test_replicate;
     "test_drop" >:: test_drop;
+    "test_split" >:: test_split;
   ]
 
 
