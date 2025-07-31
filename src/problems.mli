@@ -82,3 +82,7 @@ val remove_at : int -> 'a list -> 'a list
 
 val insert_at : 'a -> int -> 'a list -> 'a list
 (** Inserts an element at a given position into a list. *)
+
+
+val range : int -> int -> int list
+(** Creates a list containing all integers within a given range *)

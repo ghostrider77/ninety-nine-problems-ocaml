@@ -136,6 +136,12 @@ let test_insert_at _ =
   assert_equal [1; 2; 3; 100] (Problems.insert_at 100 5 [1; 2; 3])
 
 
+let test_range _ =
+  assert_equal [1] (Problems.range 1 1);
+  assert_equal [4; 5; 6; 7; 8; 9] (Problems.range 4 9);
+  assert_equal [9; 8; 7; 6; 5; 4] (Problems.range 9 4)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -159,6 +165,7 @@ let suite =
     "test_rotate" >:: test_rotate;
     "test_remove_at" >:: test_remove_at;
     "test_insert_at" >:: test_insert_at;
+    "test_range" >:: test_range;
   ]
 
 

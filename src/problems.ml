@@ -158,3 +158,10 @@ let insert_at elt n xs =
     | h :: tl when k < n -> aux (h :: acc) (k + 1) tl
     | rest -> List.rev (elt :: acc) @ rest in
   aux [] 0 xs
+
+
+let range a b =
+  let n = min a b in
+  let m = max a b in
+  let rs = List.init (m - n + 1) (fun k -> n + k) in
+  if a <= b then rs else List.rev rs
