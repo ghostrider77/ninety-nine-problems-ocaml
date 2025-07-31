@@ -86,3 +86,7 @@ val insert_at : 'a -> int -> 'a list -> 'a list
 
 val range : int -> int -> int list
 (** Creates a list containing all integers within a given range *)
+
+
+val rand_select : 'a list -> int -> 'a list
+(** Extracts a given number of randomly selected elements from a list. *)

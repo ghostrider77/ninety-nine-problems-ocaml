@@ -4,6 +4,20 @@ open Ninety_nine_ocaml
 open Ninety_nine_ocaml.Types
 
 
+let is_random_sample xs sample =
+  let count_occurrences xs =
+    let table = Hashtbl.create 100 in
+    List.iter
+      (fun x -> let cnt = Hashtbl.find_opt table x |> Option.value ~default:0 in Hashtbl.replace table x (cnt + 1)) xs;
+    table in
+  let n = List.length xs in
+  let k = List.length sample in
+  let counts1 = count_occurrences xs in
+  let counts2 = count_occurrences sample in
+  k <= n &&
+    Seq.for_all (fun (x, cnt) -> cnt <= Option.value (Hashtbl.find_opt counts1 x) ~default:0) @@ Hashtbl.to_seq counts2
+
+
 let test_last _ =
   assert_equal None (Problems.last []);
   assert_equal (Some 3) (Problems.last [1; 2 ;3]);
@@ -142,6 +156,11 @@ let test_range _ =
   assert_equal [9; 8; 7; 6; 5; 4] (Problems.range 9 4)
 
 
+let test_rand_select _ =
+  assert_equal [] (Problems.rand_select [1; 2; 3] 0);
+  assert_bool "Not a sample" (is_random_sample [1; 2; 3] (Problems.rand_select [1; 2; 3] 2))
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -166,6 +185,7 @@ let suite =
     "test_remove_at" >:: test_remove_at;
     "test_insert_at" >:: test_insert_at;
     "test_range" >:: test_range;
+    "test_rand_select" >:: test_rand_select;
   ]
 
 

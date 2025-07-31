@@ -165,3 +165,16 @@ let range a b =
   let m = max a b in
   let rs = List.init (m - n + 1) (fun k -> n + k) in
   if a <= b then rs else List.rev rs
+
+
+let rand_select xs k =
+  let select_one ys n =
+    let y = List.nth ys n in
+    (y, remove_at n ys) in
+  let rec aux acc ys length n =
+    if n = 0 || length = 0 then acc
+    else
+      let ix = Random.int length in
+      let (elt, rest) = select_one ys ix in
+      aux (elt :: acc) rest (length - 1) (n - 1) in
+  aux [] xs (List.length xs) k
