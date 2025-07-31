@@ -114,6 +114,16 @@ let test_slice _ =
   assert_equal ["c"; "d"; "e"; "f"; "g"] (Problems.slice ["a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"; "i"; "j"] 2 6)
 
 
+let test_rotate _ =
+  assert_equal [] (Problems.rotate [] 0);
+  assert_equal [] (Problems.rotate [] 10);
+  assert_equal [1; 2; 3] (Problems.rotate [1; 2; 3] 0);
+  assert_equal [2; 3; 1] (Problems.rotate [1; 2; 3] 1);
+  assert_equal [2; 3; 1] (Problems.rotate [1; 2; 3] 10);
+  assert_equal [3; 1; 2] (Problems.rotate [1; 2; 3] (-1));
+  assert_equal ["d"; "e"; "f"; "g"; "h"; "a"; "b"; "c"] (Problems.rotate ["a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"] 3)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -134,6 +144,7 @@ let suite =
     "test_drop" >:: test_drop;
     "test_split" >:: test_split;
     "test_slice" >:: test_slice;
+    "test_rotate" >:: test_rotate;
   ]
 
 

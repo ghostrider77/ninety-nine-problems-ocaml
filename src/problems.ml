@@ -136,3 +136,14 @@ let split xs n =
 
 let slice xs i k =
   List.(xs |> drop i |> take (k - i + 1))
+
+
+let rotate xs n =
+  let length = List.length xs in
+  let k =
+    if length = 0 then 0
+    else
+      let r = n mod length in
+      if r >= 0 then r else r + length in
+  let first, second = split xs k in
+  second @ first

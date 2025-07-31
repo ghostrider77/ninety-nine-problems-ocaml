@@ -70,3 +70,7 @@ val split : 'a list -> int -> 'a list * 'a list
 
 val slice : 'a list -> int -> int -> 'a list
 (** Given two indices, i and k, the slice is the list containing the elements between the ith and kth element. *)
+
+
+val rotate : 'a list -> int -> 'a list
+(** Rotate a list N places to the left. *)
