@@ -151,3 +151,10 @@ let rotate xs n =
 
 let remove_at k xs =
   List.filteri (fun ix _ -> ix <> k) xs
+
+
+let insert_at elt n xs =
+  let rec aux acc k = function
+    | h :: tl when k < n -> aux (h :: acc) (k + 1) tl
+    | rest -> List.rev (elt :: acc) @ rest in
+  aux [] 0 xs

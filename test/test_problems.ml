@@ -128,6 +128,14 @@ let test_remove_at _ =
   assert_equal ["a"; "c"; "d"] (Problems.remove_at 1 ["a"; "b"; "c"; "d"])
 
 
+let test_insert_at _ =
+  assert_equal ['a'] (Problems.insert_at 'a' 0 []);
+  assert_equal ['a'] (Problems.insert_at 'a' 10 []);
+  assert_equal [100; 1; 2; 3] (Problems.insert_at 100 0 [1; 2; 3]);
+  assert_equal [1; 2; 100; 3] (Problems.insert_at 100 2 [1; 2; 3]);
+  assert_equal [1; 2; 3; 100] (Problems.insert_at 100 5 [1; 2; 3])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -150,6 +158,7 @@ let suite =
     "test_slice" >:: test_slice;
     "test_rotate" >:: test_rotate;
     "test_remove_at" >:: test_remove_at;
+    "test_insert_at" >:: test_insert_at;
   ]
 
 

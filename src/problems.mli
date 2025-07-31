@@ -78,3 +78,7 @@ val rotate : 'a list -> int -> 'a list
 
 val remove_at : int -> 'a list -> 'a list
 (** Remove the kth element from a list. *)
+
+
+val insert_at : 'a -> int -> 'a list -> 'a list
+(** Inserts an element at a given position into a list. *)
