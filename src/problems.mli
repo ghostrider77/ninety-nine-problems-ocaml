@@ -74,3 +74,7 @@ val slice : 'a list -> int -> int -> 'a list
 
 val rotate : 'a list -> int -> 'a list
 (** Rotate a list N places to the left. *)
+
+
+val remove_at : int -> 'a list -> 'a list
+(** Remove the kth element from a list. *)

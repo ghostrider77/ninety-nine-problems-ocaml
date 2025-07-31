@@ -124,6 +124,10 @@ let test_rotate _ =
   assert_equal ["d"; "e"; "f"; "g"; "h"; "a"; "b"; "c"] (Problems.rotate ["a"; "b"; "c"; "d"; "e"; "f"; "g"; "h"] 3)
 
 
+let test_remove_at _ =
+  assert_equal ["a"; "c"; "d"] (Problems.remove_at 1 ["a"; "b"; "c"; "d"])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -145,6 +149,7 @@ let suite =
     "test_split" >:: test_split;
     "test_slice" >:: test_slice;
     "test_rotate" >:: test_rotate;
+    "test_remove_at" >:: test_remove_at;
   ]
 
 

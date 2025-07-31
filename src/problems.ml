@@ -147,3 +147,7 @@ let rotate xs n =
       if r >= 0 then r else r + length in
   let first, second = split xs k in
   second @ first
+
+
+let remove_at k xs =
+  List.filteri (fun ix _ -> ix <> k) xs
