@@ -90,3 +90,7 @@ val range : int -> int -> int list
 
 val rand_select : 'a list -> int -> 'a list
 (** Extracts a given number of randomly selected elements from a list. *)
+
+
+val lotto_select : int -> int -> int list
+(** Draws n different random numbers from the set 1..m. *)

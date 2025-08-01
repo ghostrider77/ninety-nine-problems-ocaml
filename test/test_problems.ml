@@ -158,7 +158,13 @@ let test_range _ =
 
 let test_rand_select _ =
   assert_equal [] (Problems.rand_select [1; 2; 3] 0);
-  assert_bool "Not a sample" (is_random_sample [1; 2; 3] (Problems.rand_select [1; 2; 3] 2))
+  assert_bool "Not a random sample" (is_random_sample [1; 2; 3] (Problems.rand_select [1; 2; 3] 2))
+
+
+let test_lotto_select _ =
+  let m = 90 in
+  let ns = List.init m (fun ix -> ix + 1) in
+  assert_bool "Not a random sample" (is_random_sample ns (Problems.lotto_select 5 m))
 
 
 let suite =
@@ -186,6 +192,7 @@ let suite =
     "test_insert_at" >:: test_insert_at;
     "test_range" >:: test_range;
     "test_rand_select" >:: test_rand_select;
+    "test_lotto_select" >:: test_lotto_select;
   ]
 
 

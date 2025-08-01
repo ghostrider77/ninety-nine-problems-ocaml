@@ -178,3 +178,8 @@ let rand_select xs k =
       let (elt, rest) = select_one ys ix in
       aux (elt :: acc) rest (length - 1) (n - 1) in
   aux [] xs (List.length xs) k
+
+
+let lotto_select n m =
+  let numbers = range 1 m in
+  rand_select numbers n
