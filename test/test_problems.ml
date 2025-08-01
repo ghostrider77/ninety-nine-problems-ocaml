@@ -8,7 +8,7 @@ let is_random_sample xs sample =
   let count_occurrences xs =
     let table = Hashtbl.create 100 in
     List.iter
-      (fun x -> let cnt = Hashtbl.find_opt table x |> Option.value ~default:0 in Hashtbl.replace table x (cnt + 1)) xs;
+      (fun x -> let cnt =  Option.value (Hashtbl.find_opt table x) ~default:0 in Hashtbl.replace table x (cnt + 1)) xs;
     table in
   let n = List.length xs in
   let k = List.length sample in
@@ -167,6 +167,13 @@ let test_lotto_select _ =
   assert_bool "Not a random sample" (is_random_sample ns (Problems.lotto_select 5 m))
 
 
+let test_permutation _ =
+  let is_permutation xs ps =
+    List.sort compare xs = List.sort compare ps in
+  let xs = ["a"; "b"; "c"; "d"; "e"; "f"] in
+  assert_bool "Not a permutation" (is_permutation xs (Problems.permutation xs))
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -193,6 +200,7 @@ let suite =
     "test_range" >:: test_range;
     "test_rand_select" >:: test_rand_select;
     "test_lotto_select" >:: test_lotto_select;
+    "test_permutation" >:: test_permutation;
   ]
 
 

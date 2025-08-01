@@ -183,3 +183,7 @@ let rand_select xs k =
 let lotto_select n m =
   let numbers = range 1 m in
   rand_select numbers n
+
+
+let permutation xs =
+  rand_select xs (List.length xs)
