@@ -174,6 +174,14 @@ let test_permutation _ =
   assert_bool "Not a permutation" (is_permutation xs (Problems.permutation xs))
 
 
+let test_extract _ =
+  assert_equal [[]] (Problems.extract 0 []);
+  assert_equal [] (Problems.extract 3 [1; 2]);
+  assert_equal
+    [["a"; "b"]; ["a"; "c"]; ["a"; "d"]; ["b"; "c"]; ["b"; "d"]; ["c"; "d"]]
+    (Problems.extract 2 ["a"; "b"; "c"; "d"])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -201,6 +209,7 @@ let suite =
     "test_rand_select" >:: test_rand_select;
     "test_lotto_select" >:: test_lotto_select;
     "test_permutation" >:: test_permutation;
+    "test_extract_all_combinations" >:: test_extract;
   ]
 
 

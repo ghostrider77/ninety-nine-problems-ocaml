@@ -187,3 +187,14 @@ let lotto_select n m =
 
 let permutation xs =
   rand_select xs (List.length xs)
+
+
+let rec extract k xs =
+  if k <= 0 then [[]]
+  else
+    match xs with
+      | [] -> []
+      | h :: tl ->
+          let contain_h = List.map (List.cons h) (extract (k - 1) tl) in
+          let skip_h = extract k tl in
+          contain_h @ skip_h

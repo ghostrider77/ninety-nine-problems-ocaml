@@ -98,3 +98,7 @@ val lotto_select : int -> int -> int list
 
 val permutation : 'a list -> 'a list
 (** Generates a random permutation of the elements of a list. *)
+
+
+val extract : int -> 'a list -> 'a list list
+(** Generates the combinations of k distinct objects chosen from the n elements of a list. *)
