@@ -198,3 +198,17 @@ let rec extract k xs =
           let contain_h = List.map (List.cons h) (extract (k - 1) tl) in
           let skip_h = extract k tl in
           contain_h @ skip_h
+
+
+let group xs sizes =
+  let extend size groups =
+    let elements = List.concat groups in
+    let xs' = List.filter (fun x -> not (List.mem x elements)) xs in
+    let combinations = extract size xs' in
+    List.map (fun cs -> cs :: groups) combinations in
+  let rec aux acc = function
+    | [] -> List.(acc |> map rev)
+    | size :: rest ->
+      let acc' = List.concat_map (extend size) acc in
+      aux acc' rest in
+  aux [[]] sizes

@@ -182,6 +182,12 @@ let test_extract _ =
     (Problems.extract 2 ["a"; "b"; "c"; "d"])
 
 
+let test_group _ =
+  assert_equal [[]] (Problems.group [] []);
+  assert_equal [[['a']; ['b']]; [['b']; ['a']]] (Problems.group ['a'; 'b'] [1; 1]);
+  assert_equal [[["a"; "b"]; ["c"]]; [["a"; "c"]; ["b"]]; [["b"; "c"]; ["a"]]] (Problems.group ["a"; "b"; "c"] [2; 1])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -210,6 +216,7 @@ let suite =
     "test_lotto_select" >:: test_lotto_select;
     "test_permutation" >:: test_permutation;
     "test_extract_all_combinations" >:: test_extract;
+    "test_group" >:: test_group;
   ]
 
 

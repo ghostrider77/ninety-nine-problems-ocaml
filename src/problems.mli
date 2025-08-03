@@ -102,3 +102,7 @@ val permutation : 'a list -> 'a list
 
 val extract : int -> 'a list -> 'a list list
 (** Generates the combinations of k distinct objects chosen from the n elements of a list. *)
+
+
+val group : 'a list -> int list -> 'a list list list
+(** Groups the elements of a set into disjoint subsets. *)
