@@ -188,6 +188,14 @@ let test_group _ =
   assert_equal [[["a"; "b"]; ["c"]]; [["a"; "c"]; ["b"]]; [["b"; "c"]; ["a"]]] (Problems.group ["a"; "b"; "c"] [2; 1])
 
 
+let test_sorting_by_length _ =
+  assert_equal [[]; [3]; [1; 2]; [1; 2; 3]] (Problems.length_sort [[1; 2 ;3]; []; [1; 2]; [3]]);
+  assert_equal
+    [["o"]; ["d"; "e"]; ["d"; "e"]; ["m"; "n"]; ["a"; "b"; "c"]; ["f"; "g"; "h"]; ["i"; "j"; "k"; "l"]]
+    (Problems.length_sort
+      [["a"; "b"; "c"]; ["d"; "e"]; ["f"; "g"; "h"]; ["d"; "e"]; ["i"; "j"; "k"; "l"]; ["m"; "n"]; ["o"]])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -217,6 +225,7 @@ let suite =
     "test_permutation" >:: test_permutation;
     "test_extract_all_combinations" >:: test_extract;
     "test_group" >:: test_group;
+    "test_length_sort" >:: test_sorting_by_length;
   ]
 
 

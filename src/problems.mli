@@ -106,3 +106,7 @@ val extract : int -> 'a list -> 'a list list
 
 val group : 'a list -> int list -> 'a list list list
 (** Groups the elements of a set into disjoint subsets. *)
+
+
+val length_sort : 'a list list -> 'a list list
+(** Sorts a list of lists according to length of sublists. *)

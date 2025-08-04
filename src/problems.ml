@@ -212,3 +212,7 @@ let group xs sizes =
       let acc' = List.concat_map (extend size) acc in
       aux acc' rest in
   aux [[]] sizes
+
+
+let length_sort xs =
+  List.(sort compare_lengths xs)
