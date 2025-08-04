@@ -110,3 +110,7 @@ val group : 'a list -> int list -> 'a list list list
 
 val length_sort : 'a list list -> 'a list list
 (** Sorts a list of lists according to length of sublists. *)
+
+
+val frequency_sort : 'a list list -> 'a list list
+(** Sorts a list of lists according to the length frequencies of the sublists. *)

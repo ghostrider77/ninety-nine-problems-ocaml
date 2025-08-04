@@ -216,3 +216,10 @@ let group xs sizes =
 
 let length_sort xs =
   List.(sort compare_lengths xs)
+
+
+let frequency_sort xs =
+  let lengths = List.(map length xs) in
+  let frequencies = lengths |> List.sort compare |> encode |> List.map (fun (cnt, len) -> (len, cnt)) in
+  let xs_with_length_counts = List.map2 (fun x len -> (x, List.assoc len frequencies)) xs lengths in
+  xs_with_length_counts |> List.sort (fun (_, l1) (_, l2) -> compare l1 l2) |> List.map fst

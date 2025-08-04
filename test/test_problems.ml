@@ -189,11 +189,16 @@ let test_group _ =
 
 
 let test_sorting_by_length _ =
-  assert_equal [[]; [3]; [1; 2]; [1; 2; 3]] (Problems.length_sort [[1; 2 ;3]; []; [1; 2]; [3]]);
-  assert_equal
-    [["o"]; ["d"; "e"]; ["d"; "e"]; ["m"; "n"]; ["a"; "b"; "c"]; ["f"; "g"; "h"]; ["i"; "j"; "k"; "l"]]
+  assert_equal [[]; [3]; [1; 2]; [1; 2; 3]] (Problems.length_sort [[1; 2; 3]; []; [1; 2]; [3]]);
+  assert_equal [["o"]; ["d"; "e"]; ["d"; "e"]; ["m"; "n"]; ["a"; "b"; "c"]; ["f"; "g"; "h"]; ["i"; "j"; "k"; "l"]]
     (Problems.length_sort
       [["a"; "b"; "c"]; ["d"; "e"]; ["f"; "g"; "h"]; ["d"; "e"]; ["i"; "j"; "k"; "l"]; ["m"; "n"]; ["o"]])
+
+
+let test_sorting_by_length_frequency _ =
+  assert_equal [[]; [3]; [1; 2]; [1; 2; 3]] (Problems.frequency_sort [[]; [3]; [1; 2]; [1; 2; 3]]);
+  assert_equal [[1; 2; 3]; [1; 2]; [2; 3]; [1]; [2]; [3]]
+    (Problems.frequency_sort [[1; 2]; [1]; [2]; [3]; [1; 2; 3]; [2; 3]])
 
 
 let suite =
@@ -226,6 +231,7 @@ let suite =
     "test_extract_all_combinations" >:: test_extract;
     "test_group" >:: test_group;
     "test_length_sort" >:: test_sorting_by_length;
+    "test_frequency_sort" >:: test_sorting_by_length_frequency;
   ]
 
 
