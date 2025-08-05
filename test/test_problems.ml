@@ -221,6 +221,11 @@ let test_gcd _ =
   assert_equal 6 (Problems.gcd 30 12)
 
 
+let test_coprime _ =
+  assert_bool "Should be coprime." (Problems.coprime 13 27);
+  assert_bool "Should not be coprime." (not @@ Problems.coprime 20536 7826)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -254,6 +259,7 @@ let suite =
     "test_frequency_sort" >:: test_sorting_by_length_frequency;
     "test_if_a_number_is_prime" >:: test_is_prime;
     "test_gcd" >:: test_gcd;
+    "test_coprime" >:: test_coprime;
   ]
 
 

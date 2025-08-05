@@ -122,3 +122,7 @@ val is_prime : int -> bool
 
 val gcd : int -> int -> int
 (** Determines the greatest common divisor of two positive integer numbers. *)
+
+
+val coprime : int -> int -> bool
+(** Determines whether two positive integer numbers are coprime. *)
