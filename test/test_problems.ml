@@ -226,6 +226,12 @@ let test_coprime _ =
   assert_bool "Should not be coprime." (not @@ Problems.coprime 20536 7826)
 
 
+let test_naive_phi _ =
+  assert_equal 4 (Problems.phi 10);
+  assert_equal 2 (Problems.phi 6);
+  assert_equal 6 (Problems.phi 7)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -260,6 +266,7 @@ let suite =
     "test_if_a_number_is_prime" >:: test_is_prime;
     "test_gcd" >:: test_gcd;
     "test_coprime" >:: test_coprime;
+    "test_naive_calculation_of_phi" >:: test_naive_phi;
   ]
 
 

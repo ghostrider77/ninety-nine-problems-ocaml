@@ -126,3 +126,7 @@ val gcd : int -> int -> int
 
 val coprime : int -> int -> bool
 (** Determines whether two positive integer numbers are coprime. *)
+
+
+val phi : int -> int
+(** Calculates Euler's totient function in a naive way. *)

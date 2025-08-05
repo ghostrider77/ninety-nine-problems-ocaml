@@ -244,3 +244,7 @@ let rec gcd a b =
 
 let coprime a b =
   gcd a b = 1
+
+
+let phi n =
+  Seq.(ints 1 |> take n |> fold_left (fun acc k -> if coprime n k then acc + 1 else acc) 0)
