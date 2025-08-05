@@ -114,3 +114,7 @@ val length_sort : 'a list list -> 'a list list
 
 val frequency_sort : 'a list list -> 'a list list
 (** Sorts a list of lists according to the length frequencies of the sublists. *)
+
+
+val is_prime : int -> bool
+(** Determines whether a given integer number is prime. *)

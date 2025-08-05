@@ -201,6 +201,20 @@ let test_sorting_by_length_frequency _ =
     (Problems.frequency_sort [[1; 2]; [1]; [2]; [3]; [1; 2; 3]; [2; 3]])
 
 
+let test_is_prime _ =
+  assert_bool "Not a prime" (Problems.is_prime 2);
+  assert_bool "Not a prime" (Problems.is_prime 3);
+  assert_bool "Not a prime" (Problems.is_prime 5);
+  assert_bool "Not a prime" (Problems.is_prime 7);
+  assert_bool "Not a prime" (Problems.is_prime 11);
+  assert_bool "Not a prime" (Problems.is_prime 101);
+  assert_bool "Not a prime" (Problems.is_prime 103);
+  assert_bool "It's a prime" (not @@ Problems.is_prime 4);
+  assert_bool "It's a prime" (not @@ Problems.is_prime 6);
+  assert_bool "It's a prime" (not @@ Problems.is_prime 21);
+  assert_bool "It's a prime" (not @@ Problems.is_prime 117)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -232,6 +246,7 @@ let suite =
     "test_group" >:: test_group;
     "test_length_sort" >:: test_sorting_by_length;
     "test_frequency_sort" >:: test_sorting_by_length_frequency;
+    "test_if_a_number_is_prime" >:: test_is_prime;
   ]
 
 

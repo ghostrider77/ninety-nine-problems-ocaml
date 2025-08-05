@@ -223,3 +223,15 @@ let frequency_sort xs =
   let frequencies = lengths |> List.sort compare |> encode |> List.map (fun (cnt, len) -> (len, cnt)) in
   let xs_with_length_counts = List.map2 (fun x len -> (x, List.assoc len frequencies)) xs lengths in
   xs_with_length_counts |> List.sort (fun (_, l1) (_, l2) -> compare l1 l2) |> List.map fst
+
+
+let is_prime n =
+  if n = 2 then true
+  else if n = 1 || n mod 2 = 0 then false
+  else
+    let limit = n |> float |> sqrt |> int_of_float in
+    let rec aux k =
+      if k > limit then true
+      else if n mod k = 0 then false
+      else aux (k + 2) in
+    aux 3
