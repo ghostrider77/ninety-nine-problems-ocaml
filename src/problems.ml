@@ -235,3 +235,8 @@ let is_prime n =
       else if n mod k = 0 then false
       else aux (k + 2) in
     aux 3
+
+
+let rec gcd a b =
+  if b = 0 then a
+  else gcd b (a mod b)

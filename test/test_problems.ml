@@ -215,6 +215,12 @@ let test_is_prime _ =
   assert_bool "It's a prime" (not @@ Problems.is_prime 117)
 
 
+let test_gcd _ =
+  assert_equal 1 (Problems.gcd 13 27);
+  assert_equal 2 (Problems.gcd 20536 7826);
+  assert_equal 6 (Problems.gcd 30 12)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -247,6 +253,7 @@ let suite =
     "test_length_sort" >:: test_sorting_by_length;
     "test_frequency_sort" >:: test_sorting_by_length_frequency;
     "test_if_a_number_is_prime" >:: test_is_prime;
+    "test_gcd" >:: test_gcd;
   ]
 
 

@@ -118,3 +118,7 @@ val frequency_sort : 'a list list -> 'a list list
 
 val is_prime : int -> bool
 (** Determines whether a given integer number is prime. *)
+
+
+val gcd : int -> int -> int
+(** Determines the greatest common divisor of two positive integer numbers. *)
