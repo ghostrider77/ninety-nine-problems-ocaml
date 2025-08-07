@@ -134,3 +134,7 @@ val phi : int -> int
 
 val factors : int -> int list
 (** Constructs a flat list containing the prime factors in ascending order. *)
+
+
+val factors2 : int -> (int * int) list
+(** Constructs a list containing the prime factors and their multiplicity. *)

@@ -239,6 +239,13 @@ let test_factors _ =
   assert_equal [2; 7; 11; 11; 101; 103] (Problems.factors 17622682)
 
 
+let test_prime_factorization _ =
+  assert_equal [] (Problems.factors 1);
+  assert_equal [(7, 1)] (Problems.factors2 7);
+  assert_equal [(2, 2); (3, 1)] (Problems.factors2 12);
+  assert_equal [(2, 1); (7, 1); (11, 2); (101, 1); (103, 1)] (Problems.factors2 17622682)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -275,6 +282,7 @@ let suite =
     "test_coprime" >:: test_coprime;
     "test_naive_calculation_of_phi" >:: test_naive_phi;
     "test_factors" >:: test_factors;
+    "test_prime_factorization" >:: test_prime_factorization;
   ]
 
 

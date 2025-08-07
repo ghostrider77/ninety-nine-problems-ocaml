@@ -256,3 +256,15 @@ let factors n =
     else if k mod p = 0 then aux (p :: acc) (k / p) p
     else aux acc k (if p = 2 then 3 else p + 2) in
   aux [] n 2
+
+
+let factors2 n =
+  let rec aux acc k p =
+    if p > k then List.rev acc
+    else if k mod p <> 0 then aux acc k (if p = 2 then 3 else p + 2)
+    else
+      let k' = k / p in
+      match acc with
+        | ((prime, m) :: rest) when prime = p -> aux ((prime, m + 1) :: rest) k' p
+        | _ -> aux ((p, 1) :: acc) k' p in
+  aux [] n 2
