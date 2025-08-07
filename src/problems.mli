@@ -130,3 +130,7 @@ val coprime : int -> int -> bool
 
 val phi : int -> int
 (** Calculates Euler's totient function in a naive way. *)
+
+
+val factors : int -> int list
+(** Constructs a flat list containing the prime factors in ascending order. *)

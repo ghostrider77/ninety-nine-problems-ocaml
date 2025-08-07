@@ -248,3 +248,11 @@ let coprime a b =
 
 let phi n =
   Seq.(ints 1 |> take n |> fold_left (fun acc k -> if coprime n k then acc + 1 else acc) 0)
+
+
+let factors n =
+  let rec aux acc k p =
+    if p > k then List.rev acc
+    else if k mod p = 0 then aux (p :: acc) (k / p) p
+    else aux acc k (if p = 2 then 3 else p + 2) in
+  aux [] n 2

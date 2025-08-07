@@ -232,6 +232,13 @@ let test_naive_phi _ =
   assert_equal 6 (Problems.phi 7)
 
 
+let test_factors _ =
+  assert_equal [] (Problems.factors 1);
+  assert_equal [7] (Problems.factors 7);
+  assert_equal [2; 2; 3] (Problems.factors 12);
+  assert_equal [2; 7; 11; 11; 101; 103] (Problems.factors 17622682)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -267,6 +274,7 @@ let suite =
     "test_gcd" >:: test_gcd;
     "test_coprime" >:: test_coprime;
     "test_naive_calculation_of_phi" >:: test_naive_phi;
+    "test_factors" >:: test_factors;
   ]
 
 
