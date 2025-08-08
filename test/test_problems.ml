@@ -262,7 +262,7 @@ let test_that_improved_phi_is_faster _ =
 let test_that_primes_in_range_are_calculated _ =
   assert_equal [2; 3; 5; 7; 11] (Problems.all_primes 1 12);
   assert_equal [] (Problems.all_primes 20 22);
-  assert_bool "Primes in range" (List.length (Problems.all_primes 2 7920) = 1000)
+  assert_equal 1000 (List.length (Problems.all_primes 2 7920))
 
 
 let suite =
