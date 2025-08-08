@@ -293,3 +293,10 @@ let all_primes a b =
     else if is_prime n then aux (n :: acc) (n + 1)
     else aux acc (n + 1) in
   aux [] a
+
+
+let goldbach n =
+  let rec aux k =
+    if is_prime k && is_prime (n - k) then (k, n - k)
+    else aux (k + 1) in
+  aux 2

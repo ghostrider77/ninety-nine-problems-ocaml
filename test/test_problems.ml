@@ -265,6 +265,11 @@ let test_that_primes_in_range_are_calculated _ =
   assert_equal 1000 (List.length (Problems.all_primes 2 7920))
 
 
+let test_goldbach _ =
+  assert_equal (3, 5) (Problems.goldbach 8);
+  assert_equal (5, 23) (Problems.goldbach 28)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -305,6 +310,7 @@ let suite =
     "test_improved_phi" >:: test_improved_phi;
     "test_phi_elapsed_time" >:: test_that_improved_phi_is_faster;
     "test_primes_in_range" >:: test_that_primes_in_range_are_calculated;
+    "test_goldbach" >:: test_goldbach;
   ]
 
 

@@ -150,3 +150,7 @@ val timeit : ('a -> 'b) -> 'a -> float
 
 val all_primes : int -> int -> int list
 (** Given a range of integers by its lower and upper limit, constructs a list of all prime numbers in that range. *)
+
+
+val goldbach : int -> int * int
+(** Finds the two prime numbers that sum up to a given even integer. *)
