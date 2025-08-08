@@ -154,3 +154,7 @@ val all_primes : int -> int -> int list
 
 val goldbach : int -> int * int
 (** Finds the two prime numbers that sum up to a given even integer. *)
+
+
+val goldbach_list : int -> int -> (int * (int * int)) list
+(** Given a range of integers finds a list of all even numbers and their Goldbach composition. *)

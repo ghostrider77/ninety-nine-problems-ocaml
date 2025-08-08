@@ -300,3 +300,11 @@ let goldbach n =
     if is_prime k && is_prime (n - k) then (k, n - k)
     else aux (k + 1) in
   aux 2
+
+
+let goldbach_list a b =
+  let rec aux acc k =
+    if k > b then List.rev acc
+    else if k mod 2 = 1 then aux acc (k + 1)
+    else aux ((k, goldbach k) :: acc) (k + 2) in
+  aux [] a

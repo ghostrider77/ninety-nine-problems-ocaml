@@ -270,6 +270,11 @@ let test_goldbach _ =
   assert_equal (5, 23) (Problems.goldbach 28)
 
 
+let test_goldbach_list _ =
+  assert_equal [(10, (3, 7)); (12, (5, 7)); (14, (3, 11)); (16, (3, 13)); (18, (5, 13)); (20, (3, 17))]
+    (Problems.goldbach_list 9 20)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -311,6 +316,7 @@ let suite =
     "test_phi_elapsed_time" >:: test_that_improved_phi_is_faster;
     "test_primes_in_range" >:: test_that_primes_in_range_are_calculated;
     "test_goldbach" >:: test_goldbach;
+    "test_goldbach_list" >:: test_goldbach_list;
   ]
 
 
