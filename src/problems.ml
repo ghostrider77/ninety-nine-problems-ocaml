@@ -285,3 +285,11 @@ let timeit func x =
   ignore (func x);
   let t' = Unix.gettimeofday () in
   (t' -. t)
+
+
+let all_primes a b =
+  let rec aux acc n =
+    if n > b then List.rev acc
+    else if is_prime n then aux (n :: acc) (n + 1)
+    else aux acc (n + 1) in
+  aux [] a

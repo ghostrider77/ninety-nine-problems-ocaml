@@ -259,6 +259,12 @@ let test_that_improved_phi_is_faster _ =
   assert_bool "Should calculate phi faster" (100.0 *. t2 < t1)
 
 
+let test_that_primes_in_range_are_calculated _ =
+  assert_equal [2; 3; 5; 7; 11] (Problems.all_primes 1 12);
+  assert_equal [] (Problems.all_primes 20 22);
+  assert_bool "Primes in range" (List.length (Problems.all_primes 2 7920) = 1000)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -298,6 +304,7 @@ let suite =
     "test_prime_factorization" >:: test_prime_factorization;
     "test_improved_phi" >:: test_improved_phi;
     "test_phi_elapsed_time" >:: test_that_improved_phi_is_faster;
+    "test_primes_in_range" >:: test_that_primes_in_range_are_calculated;
   ]
 
 

@@ -146,3 +146,7 @@ val phi_improved : int -> int
 
 val timeit : ('a -> 'b) -> 'a -> float
 (** Calculated elapsed time for a function and its argument. *)
+
+
+val all_primes : int -> int -> int list
+(** Given a range of integers by its lower and upper limit, constructs a list of all prime numbers in that range. *)
