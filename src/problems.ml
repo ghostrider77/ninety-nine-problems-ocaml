@@ -268,3 +268,20 @@ let factors2 n =
         | ((prime, m) :: rest) when prime = p -> aux ((prime, m + 1) :: rest) k' p
         | _ -> aux ((p, 1) :: acc) k' p in
   aux [] n 2
+
+
+let phi_improved n =
+  let factorization = factors2 n in
+  let pow m k =
+    let rec aux acc alpha =
+      if alpha = k then acc
+      else aux (acc * m) (alpha + 1) in
+    aux 1 0 in
+  List.fold_left (fun acc (p, k) -> acc * (p - 1) * pow p (k - 1)) 1 factorization
+
+
+let timeit func x =
+  let t = Unix.gettimeofday () in
+  ignore (func x);
+  let t' = Unix.gettimeofday () in
+  (t' -. t)

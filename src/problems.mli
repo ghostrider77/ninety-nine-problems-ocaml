@@ -138,3 +138,11 @@ val factors : int -> int list
 
 val factors2 : int -> (int * int) list
 (** Constructs a list containing the prime factors and their multiplicity. *)
+
+
+val phi_improved : int -> int
+(** Calculates Euler's totient function more efficiently. *)
+
+
+val timeit : ('a -> 'b) -> 'a -> float
+(** Calculated elapsed time for a function and its argument. *)

@@ -246,6 +246,19 @@ let test_prime_factorization _ =
   assert_equal [(2, 1); (7, 1); (11, 2); (101, 1); (103, 1)] (Problems.factors2 17622682)
 
 
+let test_improved_phi _ =
+  assert_equal 4 (Problems.phi_improved 10);
+  assert_equal 2 (Problems.phi_improved 6);
+  assert_equal 6 (Problems.phi_improved 7)
+
+
+let test_that_improved_phi_is_faster _ =
+  let n = 10090 in
+  let t1 = Problems.timeit Problems.phi n in
+  let t2 = Problems.timeit Problems.phi_improved n in
+  assert_bool "Should calculate phi faster" (100.0 *. t2 < t1)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -283,6 +296,8 @@ let suite =
     "test_naive_calculation_of_phi" >:: test_naive_phi;
     "test_factors" >:: test_factors;
     "test_prime_factorization" >:: test_prime_factorization;
+    "test_improved_phi" >:: test_improved_phi;
+    "test_phi_elapsed_time" >:: test_that_improved_phi_is_faster;
   ]
 
 
