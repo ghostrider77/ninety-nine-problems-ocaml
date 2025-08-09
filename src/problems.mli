@@ -158,3 +158,11 @@ val goldbach : int -> int * int
 
 val goldbach_list : int -> int -> (int * (int * int)) list
 (** Given a range of integers finds a list of all even numbers and their Goldbach composition. *)
+
+
+val table2 : string -> string -> bool_expr -> (bool * bool * bool) list
+(** Returns the truth table of a given logical expression in two variables. *)
+
+
+val table : string list -> bool_expr -> ((string * bool) list * bool) list
+(** Returns the truth table of a given logical expression for any number of variables *)

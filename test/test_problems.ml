@@ -275,6 +275,24 @@ let test_goldbach_list _ =
     (Problems.goldbach_list 9 20)
 
 
+let test_logical_tables_with_two_variables _ =
+  assert_equal [(true, true, true); (true, false, true); (false, true, true); (false, false, true)]
+    (Problems.table2 "a" "b" (Or (Var "a", Not (Var "a"))));
+  assert_equal [(true, true, true); (true, false, true); (false, true, false); (false, false, false)]
+    (Problems.table2 "a" "b" (And (Var "a", Or (Var "a", Var "b"))))
+
+
+let test_logical_tables _ =
+  assert_equal [([("a", true)], false); ([("a", false)], false)] (Problems.table ["a"] (And (Var "a", Not (Var "a"))));
+  assert_equal
+    [ ([("a", true); ("b", true)], true)
+    ; ([("a", true); ("b", false)], true)
+    ; ([("a", false); ("b", true)], false)
+    ; ([("a", false); ("b", false)], false)
+    ]
+    (Problems.table ["a"; "b"] (And (Var "a", Or (Var "a", Var "b"))))
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -317,6 +335,8 @@ let suite =
     "test_primes_in_range" >:: test_that_primes_in_range_are_calculated;
     "test_goldbach" >:: test_goldbach;
     "test_goldbach_list" >:: test_goldbach_list;
+    "test_logical_tables_with_two_variables" >:: test_logical_tables_with_two_variables;
+    "test_logical_tables" >:: test_logical_tables;
   ]
 
 

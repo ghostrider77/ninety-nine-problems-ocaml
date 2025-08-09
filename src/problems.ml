@@ -1,5 +1,8 @@
 open Types
 
+module StringMap = Map.Make(String)
+
+
 let rec last = function
   | [] -> None
   | [x] -> Some x
@@ -308,3 +311,39 @@ let goldbach_list a b =
     else if k mod 2 = 1 then aux acc (k + 1)
     else aux ((k, goldbach k) :: acc) (k + 2) in
   aux [] a
+
+
+let table2 a b expression =
+  let rec evaluate a_value b_value = function
+    | Var x ->
+        if x = a then a_value
+        else if x = b then b_value
+        else failwith "Unknown variable name"
+    | Not expr -> not (evaluate a_value b_value expr)
+    | And (expr1, expr2) -> (evaluate a_value b_value expr1) && (evaluate a_value b_value expr2)
+    | Or (expr1, expr2) -> (evaluate a_value b_value expr1) || (evaluate a_value b_value expr2) in
+  let values = [(true, true); (true, false); (false, true); (false, false)] in
+  List.map (fun (a_val, b_val) -> (a_val, b_val, evaluate a_val b_val expression)) values
+
+
+let table variable_names expression =
+  let product xs n =
+    let rec aux acc k =
+      if k = n then acc
+      else
+        let acc' = List.concat_map (fun x -> List.map (List.cons x) acc) xs in
+        aux acc' (k + 1) in
+    aux [[]] 0 in
+  let rec evaluate values = function
+    | Var x -> StringMap.find x values
+    | Not expr -> not (evaluate values expr)
+    | And (expr1, expr2) -> (evaluate values expr1) && (evaluate values expr2)
+    | Or (expr1, expr2) -> (evaluate values expr1) || (evaluate values expr2) in
+  let process bool_values =
+    let assoc = List.combine variable_names bool_values in
+    let values = StringMap.of_list assoc in
+    let result = evaluate values expression in
+    (assoc, result) in
+  let n = List.length variable_names in
+  let all_inputs = product [true; false] n in
+  List.map process all_inputs
