@@ -1,5 +1,10 @@
 open Types
 
+module CodeTreeSet = Set.Make(
+  struct
+    type t = Code_tree.t
+    let compare = Code_tree.compare
+  end)
 module StringMap = Map.Make(String)
 
 
@@ -364,3 +369,18 @@ let gray n =
     aux 1 0 in
   let size = pow 2 n in
   List.map (Fun.compose bitstring_of_int encode) @@ List.init size Fun.id
+
+
+let huffman frequencies =
+  let encode fs =
+    let rec aux queue =
+      if CodeTreeSet.cardinal queue <= 1 then CodeTreeSet.min_elt queue
+      else
+        let t1 = CodeTreeSet.min_elt queue in
+        let queue' = CodeTreeSet.remove t1 queue in
+        let t2 = CodeTreeSet.min_elt queue' in
+        let queue'' = CodeTreeSet.remove t2 queue' in
+        aux (CodeTreeSet.add (Code_tree.merge t1 t2) queue'') in
+    aux (List.fold_left (fun acc (name, weight) -> CodeTreeSet.add (Leaf {name; weight}) acc) CodeTreeSet.empty fs) in
+  let tree = encode frequencies in
+  Code_tree.traverse tree

@@ -170,3 +170,7 @@ val table : string list -> bool_expr -> ((string * bool) list * bool) list
 
 val gray : int -> string list
 (** An n-bit Gray code construction *)
+
+
+val huffman : (string * int) list -> (string * string) list
+(** Constructs the Huffman code for all symbols. *)

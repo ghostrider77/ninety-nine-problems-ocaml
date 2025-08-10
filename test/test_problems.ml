@@ -299,6 +299,12 @@ let test_gray_code _ =
   assert_equal ["000"; "001"; "011"; "010"; "110"; "111"; "101"; "100"] (Problems.gray 3)
 
 
+let test_huffman_encoding _ =
+  let fs = [("a", 45); ("b", 13); ("c", 12); ("d", 16); ("e", 9); ("f", 5)] in
+  let expected = [("a", "0"); ("c", "100"); ("b", "101"); ("f", "1100"); ("e", "1101"); ("d", "111")] in
+  assert_equal expected (Problems.huffman fs)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -344,6 +350,7 @@ let suite =
     "test_logical_tables_with_two_variables" >:: test_logical_tables_with_two_variables;
     "test_logical_tables" >:: test_logical_tables;
     "test_gray_code" >:: test_gray_code;
+    "test_huffman_encoding" >:: test_huffman_encoding;
   ]
 
 
