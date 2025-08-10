@@ -1,4 +1,4 @@
 (library
  (name ninety_nine_ocaml)
- (modules problems types)
+ (modules code_tree problems types)
  (libraries unix))
