@@ -166,3 +166,7 @@ val table2 : string -> string -> bool_expr -> (bool * bool * bool) list
 
 val table : string list -> bool_expr -> ((string * bool) list * bool) list
 (** Returns the truth table of a given logical expression for any number of variables *)
+
+
+val gray : int -> string list
+(** An n-bit Gray code construction *)

@@ -293,6 +293,12 @@ let test_logical_tables _ =
     (Problems.table ["a"; "b"] (And (Var "a", Or (Var "a", Var "b"))))
 
 
+let test_gray_code _ =
+  assert_equal ["0"; "1"] (Problems.gray 1);
+  assert_equal ["00"; "01"; "11"; "10"] (Problems.gray 2);
+  assert_equal ["000"; "001"; "011"; "010"; "110"; "111"; "101"; "100"] (Problems.gray 3)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -337,6 +343,7 @@ let suite =
     "test_goldbach_list" >:: test_goldbach_list;
     "test_logical_tables_with_two_variables" >:: test_logical_tables_with_two_variables;
     "test_logical_tables" >:: test_logical_tables;
+    "test_gray_code" >:: test_gray_code;
   ]
 
 

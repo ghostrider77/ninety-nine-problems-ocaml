@@ -347,3 +347,20 @@ let table variable_names expression =
   let n = List.length variable_names in
   let all_inputs = product [true; false] n in
   List.map process all_inputs
+
+
+let gray n =
+  let bitstring_of_int m =
+    let rec aux acc k digit =
+      if digit = n then acc |> List.map string_of_int |> String.concat ""
+      else aux ((k mod 2) :: acc) (k / 2) (digit + 1) in
+    aux [] m 0 in
+  let encode k =
+    k lxor (k lsr 1) in
+  let pow m k =
+    let rec aux acc alpha =
+      if alpha = k then acc
+      else aux (acc * m) (alpha + 1) in
+    aux 1 0 in
+  let size = pow 2 n in
+  List.map (Fun.compose bitstring_of_int encode) @@ List.init size Fun.id
