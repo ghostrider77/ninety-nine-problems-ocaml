@@ -320,6 +320,14 @@ let test_binary_tree_symmetry _ =
   assert_equal false (Problems.is_symmetric (Node ('x', Node('y', Empty, Empty), Empty)))
 
 
+let test_binary_search_tree _ =
+  let open Binary_tree in
+  assert_equal Empty (Problems.construct []);
+  assert_equal (Node (1, Empty, Empty)) (Problems.construct [1]);
+  assert_equal (Node (1, Empty, Node (2, Empty, Node (3, Empty, Empty)))) (Problems.construct [1; 2; 3]);
+  assert_equal (Node (2, Node (1, Empty, Empty), Node (3, Empty, Empty))) (Problems.construct [2; 1; 3])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -368,6 +376,7 @@ let suite =
     "test_huffman_encoding" >:: test_huffman_encoding;
     "test_balanced_binary_trees" >:: test_balanced_binary_trees;
     "test_symmetric_binary_trees" >:: test_binary_tree_symmetry;
+    "test_binary_search_tree_construction" >:: test_binary_search_tree;
   ]
 
 

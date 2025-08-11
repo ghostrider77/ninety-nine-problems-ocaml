@@ -412,3 +412,14 @@ let is_symmetric tree =
   match tree with
     | Empty -> true
     | Node (_, l, r) -> is_mirror l r
+
+
+let construct xs =
+  let open Binary_tree in
+  let rec insert x = function
+    | Empty -> Node (x, Empty, Empty)
+    | Node (v, l, r) as tree ->
+        if x < v then Node (v, insert x l, r)
+        else if x = v then tree
+        else Node (v, l, insert x r) in
+  List.fold_left (Fun.flip insert) Empty xs

@@ -182,3 +182,7 @@ val cbal_tree : int -> char Binary_tree.t list
 
 val is_symmetric : 'a Binary_tree.t -> bool
 (** Checks whether a given binary tree is symmetric. *)
+
+
+val construct : int list -> int Binary_tree.t
+(** Constructs a binary search tree from a list of integer numbers. *)
