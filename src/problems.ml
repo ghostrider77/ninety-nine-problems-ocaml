@@ -384,3 +384,19 @@ let huffman frequencies =
     aux (List.fold_left (fun acc (name, weight) -> CodeTreeSet.add (Leaf {name; weight}) acc) CodeTreeSet.empty fs) in
   let tree = encode frequencies in
   Code_tree.traverse tree
+
+
+let cbal_tree n =
+  let open Binary_tree in
+  let make_nodes left_subtrees right_subtrees =
+    List.concat_map (fun l -> List.map (fun r -> Node ('x', l, r)) right_subtrees) left_subtrees in
+  let rec balanced_trees k =
+    if k = 0 then [Empty]
+    else if k mod 2 = 1 then
+      let ts = balanced_trees (k / 2) in
+      make_nodes ts ts
+    else
+      let ts1 = balanced_trees (k / 2) in
+      let ts2 = balanced_trees ((k - 1) / 2) in
+      make_nodes ts1 ts2 @ make_nodes ts2 ts1 in
+  balanced_trees n

@@ -174,3 +174,7 @@ val gray : int -> string list
 
 val huffman : (string * int) list -> (string * string) list
 (** Constructs the Huffman code for all symbols. *)
+
+
+val cbal_tree : int -> char Binary_tree.t list
+(** Constructs completely balanced binary trees. *)

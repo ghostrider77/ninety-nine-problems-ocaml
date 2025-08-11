@@ -305,6 +305,14 @@ let test_huffman_encoding _ =
   assert_equal expected (Problems.huffman fs)
 
 
+let test_balanced_binary_trees _ =
+  let open Binary_tree in
+  assert_equal [Empty] (Problems.cbal_tree 0);
+  assert_equal [Node ('x', Empty, Empty)] (Problems.cbal_tree 1);
+  assert_equal [Node ('x', Node('x', Empty, Empty), Empty); Node ('x', Empty, Node('x', Empty, Empty))]
+    (Problems.cbal_tree 2)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -351,6 +359,7 @@ let suite =
     "test_logical_tables" >:: test_logical_tables;
     "test_gray_code" >:: test_gray_code;
     "test_huffman_encoding" >:: test_huffman_encoding;
+    "test_balanced_binary_trees" >:: test_balanced_binary_trees;
   ]
 
 
