@@ -178,3 +178,7 @@ val huffman : (string * int) list -> (string * string) list
 
 val cbal_tree : int -> char Binary_tree.t list
 (** Constructs completely balanced binary trees. *)
+
+
+val is_symmetric : 'a Binary_tree.t -> bool
+(** Checks whether a given binary tree is symmetric. *)

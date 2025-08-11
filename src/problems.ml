@@ -400,3 +400,15 @@ let cbal_tree n =
       let ts2 = balanced_trees ((k - 1) / 2) in
       make_nodes ts1 ts2 @ make_nodes ts2 ts1 in
   balanced_trees n
+
+
+let is_symmetric tree =
+  let open Binary_tree in
+  let rec is_mirror t1 t2 =
+    match (t1, t2) with
+      | (Empty, Empty) -> true
+      | (Node(_, l1, r1), Node(_, l2, r2)) -> is_mirror l1 r2 && is_mirror r1 l2
+      | _ -> false in
+  match tree with
+    | Empty -> true
+    | Node (_, l, r) -> is_mirror l r

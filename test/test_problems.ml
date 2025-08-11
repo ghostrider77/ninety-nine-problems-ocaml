@@ -313,6 +313,13 @@ let test_balanced_binary_trees _ =
     (Problems.cbal_tree 2)
 
 
+let test_binary_tree_symmetry _ =
+  let open Binary_tree in
+  assert_equal true (Problems.is_symmetric Empty);
+  assert_equal true (Problems.is_symmetric (Node ('x', Empty, Empty)));
+  assert_equal false (Problems.is_symmetric (Node ('x', Node('y', Empty, Empty), Empty)))
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -360,6 +367,7 @@ let suite =
     "test_gray_code" >:: test_gray_code;
     "test_huffman_encoding" >:: test_huffman_encoding;
     "test_balanced_binary_trees" >:: test_balanced_binary_trees;
+    "test_symmetric_binary_trees" >:: test_binary_tree_symmetry;
   ]
 
 
