@@ -372,6 +372,7 @@ let gray n =
 
 
 let huffman frequencies =
+  let open Code_tree in
   let encode fs =
     let rec aux queue =
       if CodeTreeSet.cardinal queue <= 1 then CodeTreeSet.min_elt queue
@@ -380,10 +381,10 @@ let huffman frequencies =
         let queue' = CodeTreeSet.remove t1 queue in
         let t2 = CodeTreeSet.min_elt queue' in
         let queue'' = CodeTreeSet.remove t2 queue' in
-        aux (CodeTreeSet.add (Code_tree.merge t1 t2) queue'') in
+        aux (CodeTreeSet.add (merge t1 t2) queue'') in
     aux (List.fold_left (fun acc (name, weight) -> CodeTreeSet.add (Leaf {name; weight}) acc) CodeTreeSet.empty fs) in
   let tree = encode frequencies in
-  Code_tree.traverse tree
+  traverse tree
 
 
 let cbal_tree n =
