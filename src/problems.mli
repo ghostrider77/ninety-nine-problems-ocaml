@@ -190,3 +190,7 @@ val construct : int list -> int Binary_tree.t
 
 val sym_cbal_trees : int -> char Binary_tree.t list
 (** Constructs all symmetric, completely balanced binary trees with a given number of nodes. *)
+
+
+val hbal_tree : int -> char Binary_tree.t list
+(** Constructs height-balanced binary trees. *)

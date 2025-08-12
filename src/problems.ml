@@ -428,3 +428,17 @@ let construct xs =
 
 let sym_cbal_trees n =
   List.filter is_symmetric (cbal_tree n)
+
+
+let hbal_tree h =
+  let open Binary_tree in
+  let make_nodes left_subtrees right_subtrees =
+    List.concat_map (fun l -> List.map (fun r -> Node ('x', l, r)) right_subtrees) left_subtrees in
+  let rec height_balanced_trees k =
+    if k = 0 then [Empty]
+    else if k = 1 then [Node ('x', Empty, Empty)]
+    else
+      let ts1 = height_balanced_trees (k - 1) in
+      let ts2 = height_balanced_trees (k - 2) in
+      make_nodes ts1 ts1 @ make_nodes ts1 ts2 @ make_nodes ts2 ts1 in
+  height_balanced_trees h

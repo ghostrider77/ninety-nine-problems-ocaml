@@ -309,7 +309,7 @@ let test_balanced_binary_trees _ =
   let open Binary_tree in
   assert_equal [Empty] (Problems.cbal_tree 0);
   assert_equal [Node ('x', Empty, Empty)] (Problems.cbal_tree 1);
-  assert_equal [Node ('x', Node('x', Empty, Empty), Empty); Node ('x', Empty, Node('x', Empty, Empty))]
+  assert_equal [Node ('x', Node ('x', Empty, Empty), Empty); Node ('x', Empty, Node ('x', Empty, Empty))]
     (Problems.cbal_tree 2)
 
 
@@ -317,7 +317,7 @@ let test_binary_tree_symmetry _ =
   let open Binary_tree in
   assert_equal true (Problems.is_symmetric Empty);
   assert_equal true (Problems.is_symmetric (Node ('x', Empty, Empty)));
-  assert_equal false (Problems.is_symmetric (Node ('x', Node('y', Empty, Empty), Empty)))
+  assert_equal false (Problems.is_symmetric (Node ('x', Node ('y', Empty, Empty), Empty)))
 
 
 let test_binary_search_tree _ =
@@ -333,6 +333,18 @@ let test_symmetric_balanced_binary_trees _ =
   assert_equal [Empty] (Problems.sym_cbal_trees 0);
   assert_equal [Node ('x', Empty, Empty)] (Problems.sym_cbal_trees 1);
   assert_equal [] (Problems.sym_cbal_trees 2)
+
+
+let test_height_balanced_binary_trees _ =
+  let open Binary_tree in
+  assert_equal [Empty] (Problems.hbal_tree 0);
+  assert_equal [Node ('x', Empty, Empty)] (Problems.hbal_tree 1);
+  assert_equal
+    [ Node ('x', Node ('x', Empty, Empty), Node ('x', Empty, Empty))
+    ; Node ('x', Node('x', Empty, Empty), Empty)
+    ; Node ('x', Empty, Node('x', Empty, Empty))
+    ]
+    (Problems.hbal_tree 2)
 
 
 let suite =
@@ -385,6 +397,7 @@ let suite =
     "test_symmetric_binary_trees" >:: test_binary_tree_symmetry;
     "test_binary_search_tree_construction" >:: test_binary_search_tree;
     "test_symmetric_balanced_binary_trees" >:: test_symmetric_balanced_binary_trees;
+    "test_height_balanced_binary_trees" >:: test_height_balanced_binary_trees;
   ]
 
 
