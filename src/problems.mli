@@ -186,3 +186,7 @@ val is_symmetric : 'a Binary_tree.t -> bool
 
 val construct : int list -> int Binary_tree.t
 (** Constructs a binary search tree from a list of integer numbers. *)
+
+
+val sym_cbal_trees : int -> char Binary_tree.t list
+(** Constructs all symmetric, completely balanced binary trees with a given number of nodes. *)

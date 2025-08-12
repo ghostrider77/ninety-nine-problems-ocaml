@@ -423,3 +423,7 @@ let construct xs =
         else if x = v then tree
         else Node (v, l, insert x r) in
   List.fold_left (Fun.flip insert) Empty xs
+
+
+let sym_cbal_trees n =
+  List.filter is_symmetric (cbal_tree n)

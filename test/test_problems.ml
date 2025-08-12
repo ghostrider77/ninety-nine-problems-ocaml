@@ -328,6 +328,13 @@ let test_binary_search_tree _ =
   assert_equal (Node (2, Node (1, Empty, Empty), Node (3, Empty, Empty))) (Problems.construct [2; 1; 3])
 
 
+let test_symmetric_balanced_binary_trees _ =
+  let open Binary_tree in
+  assert_equal [Empty] (Problems.sym_cbal_trees 0);
+  assert_equal [Node ('x', Empty, Empty)] (Problems.sym_cbal_trees 1);
+  assert_equal [] (Problems.sym_cbal_trees 2)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -377,6 +384,7 @@ let suite =
     "test_balanced_binary_trees" >:: test_balanced_binary_trees;
     "test_symmetric_binary_trees" >:: test_binary_tree_symmetry;
     "test_binary_search_tree_construction" >:: test_binary_search_tree;
+    "test_symmetric_balanced_binary_trees" >:: test_symmetric_balanced_binary_trees;
   ]
 
 
