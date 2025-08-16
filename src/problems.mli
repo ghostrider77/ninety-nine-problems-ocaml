@@ -194,3 +194,7 @@ val sym_cbal_trees : int -> char Binary_tree.t list
 
 val hbal_tree : int -> char Binary_tree.t list
 (** Constructs height-balanced binary trees. *)
+
+
+val count_leaves : 'a Binary_tree.t -> int
+(** Count the leaves of a binary tree *)

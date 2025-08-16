@@ -347,6 +347,14 @@ let test_height_balanced_binary_trees _ =
     (Problems.hbal_tree 2)
 
 
+let test_count_leaves _ =
+  let open Binary_tree in
+  assert_equal 0 (Problems.count_leaves Empty);
+  assert_equal 1 (Problems.count_leaves @@ Node ('x', Empty, Empty));
+  assert_equal 2
+    (Problems.count_leaves @@ Node ('x', Empty, Node ('y', Node ('z', Empty, Empty), Node ('w', Empty, Empty))))
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -398,6 +406,7 @@ let suite =
     "test_binary_search_tree_construction" >:: test_binary_search_tree;
     "test_symmetric_balanced_binary_trees" >:: test_symmetric_balanced_binary_trees;
     "test_height_balanced_binary_trees" >:: test_height_balanced_binary_trees;
+    "test_count_leaves" >:: test_count_leaves;
   ]
 
 

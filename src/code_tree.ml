@@ -1,6 +1,6 @@
 type t =
   | Leaf of {name : string; weight : int}
-  | Node of {left : t; right: t; names : string list; weight : int}
+  | Node of {left : t; right : t; names : string list; weight : int}
 
 
 let compare t1 t2 =

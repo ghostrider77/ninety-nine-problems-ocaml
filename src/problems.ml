@@ -442,3 +442,12 @@ let hbal_tree h =
       let ts2 = height_balanced_trees (k - 2) in
       make_nodes ts1 ts1 @ make_nodes ts1 ts2 @ make_nodes ts2 ts1 in
   height_balanced_trees h
+
+
+let count_leaves tree =
+  let open Binary_tree in
+  let rec count_leaves_aux = function
+    | Empty -> 0
+    | Node (_, Empty, Empty) -> 1
+    | Node (_, l, r) -> count_leaves_aux l + count_leaves_aux r in
+  count_leaves_aux tree
