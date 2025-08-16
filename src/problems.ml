@@ -451,3 +451,12 @@ let count_leaves tree =
     | Node (_, Empty, Empty) -> 1
     | Node (_, l, r) -> count_leaves_aux l + count_leaves_aux r in
   count_leaves_aux tree
+
+
+let leaves tree =
+  let open Binary_tree in
+  let rec collect_leaves_aux acc = function
+    | Empty -> acc
+    | Node (v, Empty, Empty) -> v :: acc
+    | Node (_, l, r) -> collect_leaves_aux (collect_leaves_aux acc r) l in
+  collect_leaves_aux [] tree

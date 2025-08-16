@@ -197,4 +197,8 @@ val hbal_tree : int -> char Binary_tree.t list
 
 
 val count_leaves : 'a Binary_tree.t -> int
-(** Count the leaves of a binary tree *)
+(** Counts the leaves of a binary tree *)
+
+
+val leaves : 'a Binary_tree.t -> 'a list
+(** Collects the leaves of a binary tree in a list *)
