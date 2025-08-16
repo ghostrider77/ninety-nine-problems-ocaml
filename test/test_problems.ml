@@ -362,6 +362,14 @@ let test_leaves _ =
     (Problems.leaves @@ Node ('x', Empty, Node ('y', Node ('z', Empty, Empty), Node ('w', Empty, Empty))))
 
 
+let test_internals _ =
+  let open Binary_tree in
+  assert_equal [] (Problems.leaves Empty);
+  assert_equal [] (Problems.internals @@ Node ('x', Empty, Empty));
+  assert_equal ['x'; 'y']
+    (Problems.internals @@ Node ('x', Empty, Node ('y', Node ('z', Empty, Empty), Node ('w', Empty, Empty))))
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -415,6 +423,7 @@ let suite =
     "test_height_balanced_binary_trees" >:: test_height_balanced_binary_trees;
     "test_count_leaves" >:: test_count_leaves;
     "test_leaves" >:: test_leaves;
+    "test_internals" >:: test_internals;
   ]
 
 

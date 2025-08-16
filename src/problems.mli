@@ -202,3 +202,7 @@ val count_leaves : 'a Binary_tree.t -> int
 
 val leaves : 'a Binary_tree.t -> 'a list
 (** Collects the leaves of a binary tree in a list *)
+
+
+val internals : 'a Binary_tree.t -> 'a list
+(** Collects the internal nodes of a binary tree in a list. *)

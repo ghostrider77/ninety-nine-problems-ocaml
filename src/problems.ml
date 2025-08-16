@@ -460,3 +460,14 @@ let leaves tree =
     | Node (v, Empty, Empty) -> v :: acc
     | Node (_, l, r) -> collect_leaves_aux (collect_leaves_aux acc r) l in
   collect_leaves_aux [] tree
+
+
+let internals tree =
+  let open Binary_tree in
+  let rec collect_internal_nodes acc = function
+    | Empty -> acc
+    | Node (_, Empty, Empty) -> acc
+    | Node (v, l, r) ->
+        let right_nodes = collect_internal_nodes acc r in
+        collect_internal_nodes (v :: right_nodes) l in
+  collect_internal_nodes [] tree
