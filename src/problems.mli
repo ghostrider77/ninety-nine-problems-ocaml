@@ -206,3 +206,7 @@ val leaves : 'a Binary_tree.t -> 'a list
 
 val internals : 'a Binary_tree.t -> 'a list
 (** Collects the internal nodes of a binary tree in a list. *)
+
+
+val at_level : 'a Binary_tree.t -> int -> 'a list
+(** Collects the nodes at a given level in a list. *)

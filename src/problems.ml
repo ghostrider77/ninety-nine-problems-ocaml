@@ -455,11 +455,11 @@ let count_leaves tree =
 
 let leaves tree =
   let open Binary_tree in
-  let rec collect_leaves_aux acc = function
+  let rec collect_leaves acc = function
     | Empty -> acc
     | Node (v, Empty, Empty) -> v :: acc
-    | Node (_, l, r) -> collect_leaves_aux (collect_leaves_aux acc r) l in
-  collect_leaves_aux [] tree
+    | Node (_, l, r) -> collect_leaves (collect_leaves acc r) l in
+  collect_leaves [] tree
 
 
 let internals tree =
@@ -471,3 +471,17 @@ let internals tree =
         let right_nodes = collect_internal_nodes acc r in
         collect_internal_nodes (v :: right_nodes) l in
   collect_internal_nodes [] tree
+
+
+let at_level tree n =
+  let open Binary_tree in
+  let rec collect_nodes acc level = function
+    | Empty -> acc
+    | Node (v, l, r) ->
+        if level < n then
+          let next_level = level + 1 in
+          let right_nodes = collect_nodes acc next_level r in
+          collect_nodes right_nodes next_level l
+        else if level = n then v :: acc
+        else acc in
+  collect_nodes [] 1 tree

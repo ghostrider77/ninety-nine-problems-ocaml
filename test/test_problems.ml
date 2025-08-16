@@ -370,6 +370,16 @@ let test_internals _ =
     (Problems.internals @@ Node ('x', Empty, Node ('y', Node ('z', Empty, Empty), Node ('w', Empty, Empty))))
 
 
+let test_collecting_nodes_at_given_level _ =
+  let open Binary_tree in
+  let tree = Node ('x', Empty, Node ('y', Node ('z', Empty, Empty), Node ('w', Empty, Empty))) in
+  assert_equal [] (Problems.at_level Empty 2);
+  assert_equal ['x'] (Problems.at_level tree 1);
+  assert_equal ['y'] (Problems.at_level tree 2);
+  assert_equal ['z'; 'w'] (Problems.at_level tree 3);
+  assert_equal [] (Problems.at_level tree 4)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -424,6 +434,7 @@ let suite =
     "test_count_leaves" >:: test_count_leaves;
     "test_leaves" >:: test_leaves;
     "test_internals" >:: test_internals;
+    "test_collecting_nodes_at_given_level" >:: test_collecting_nodes_at_given_level;
   ]
 
 
