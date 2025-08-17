@@ -210,3 +210,7 @@ val internals : 'a Binary_tree.t -> 'a list
 
 val at_level : 'a Binary_tree.t -> int -> 'a list
 (** Collects the nodes at a given level in a list. *)
+
+
+val complete_binary_tree : 'a list -> 'a Binary_tree.t
+(** Construct a complete binary tree. *)

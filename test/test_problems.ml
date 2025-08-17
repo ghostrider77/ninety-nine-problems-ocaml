@@ -380,6 +380,13 @@ let test_collecting_nodes_at_given_level _ =
   assert_equal [] (Problems.at_level tree 4)
 
 
+let test_complete_binary_tree _ =
+  let open Binary_tree in
+  assert_equal Empty (Problems.complete_binary_tree []);
+  assert_equal (Node ('x', Empty, Empty)) (Problems.complete_binary_tree ['x']);
+  assert_equal (Node ('a', Node ('b', Empty, Empty), Empty)) (Problems.complete_binary_tree ['a'; 'b'])
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -435,6 +442,7 @@ let suite =
     "test_leaves" >:: test_leaves;
     "test_internals" >:: test_internals;
     "test_collecting_nodes_at_given_level" >:: test_collecting_nodes_at_given_level;
+    "test_complete_binary_tree" >:: test_complete_binary_tree;
   ]
 
 

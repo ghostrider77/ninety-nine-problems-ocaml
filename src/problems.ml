@@ -485,3 +485,18 @@ let at_level tree n =
         else if level = n then v :: acc
         else acc in
   collect_nodes [] 1 tree
+
+
+let complete_binary_tree xs =
+  let open Binary_tree in
+  let rec is_in_left_tree n =
+    if n < 2 then failwith "Undefined"
+    else if n < 4 then (n land 1) = 0
+    else is_in_left_tree (n lsr 1) in
+  let rec construct = function
+    | [] -> Empty
+    | h :: tl ->
+        let left_items = List.filteri (fun ix _ -> is_in_left_tree (ix + 2)) tl in
+        let right_items = List.filteri (fun ix _ -> not @@ is_in_left_tree (ix + 2)) tl in
+        Node (h, construct left_items, construct right_items) in
+  construct xs
