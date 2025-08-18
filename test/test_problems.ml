@@ -387,6 +387,13 @@ let test_complete_binary_tree _ =
   assert_equal (Node ('a', Node ('b', Empty, Empty), Empty)) (Problems.complete_binary_tree ['a'; 'b'])
 
 
+let test_queens_positions _ =
+  assert_equal [[1]] (Problems.queens_positions 1);
+  assert_equal [] (Problems.queens_positions 2);
+  assert_equal [] (Problems.queens_positions 3);
+  assert_equal [[3; 1; 4; 2]; [2; 4; 1; 3]] (Problems.queens_positions 4)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -443,6 +450,7 @@ let suite =
     "test_internals" >:: test_internals;
     "test_collecting_nodes_at_given_level" >:: test_collecting_nodes_at_given_level;
     "test_complete_binary_tree" >:: test_complete_binary_tree;
+    "test_queens_positions" >:: test_queens_positions;
   ]
 
 

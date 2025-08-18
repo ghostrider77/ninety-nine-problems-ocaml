@@ -500,3 +500,16 @@ let complete_binary_tree xs =
         let right_items = List.filteri (fun ix _ -> not @@ is_in_left_tree (ix + 2)) tl in
         Node (h, construct left_items, construct right_items) in
   construct xs
+
+
+let queens_positions n =
+  let extend column ps =
+    let is_suitable row =
+      let coords = List.mapi (fun ix r -> (r, ix + column + 1)) ps in
+      List.for_all (fun (r, c) -> abs (column - c) <> abs (row - r) && row <> r) coords in
+    let row_ixs = List.init n (fun ix -> ix + 1) in
+    List.filter_map (fun p -> if is_suitable p then Some (p :: ps) else None) row_ixs in
+  let rec place_queen k acc =
+    if k = 0 then acc
+    else place_queen (k - 1) (List.concat_map (extend k) acc) in
+  place_queen n [[]]

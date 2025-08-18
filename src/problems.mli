@@ -9,7 +9,7 @@ val last_two : 'a list -> ('a * 'a) option
 
 
 val at : int -> 'a list -> 'a option
-(** Finds the nth element of a list.*)
+(** Finds the {i n}th element of a list.*)
 
 
 val length : 'a list -> int
@@ -61,7 +61,7 @@ val replicate : 'a list -> int -> 'a list
 
 
 val drop : 'a list -> int -> 'a list
-(** Drops every nth element from a list. *)
+(** Drops every {i n}th element from a list. *)
 
 
 val split : 'a list -> int -> 'a list * 'a list
@@ -69,15 +69,16 @@ val split : 'a list -> int -> 'a list * 'a list
 
 
 val slice : 'a list -> int -> int -> 'a list
-(** Given two indices, i and k, the slice is the list containing the elements between the ith and kth element. *)
+(** Given two indices, {i i} and {i k}, the slice is the list containing the elements between the {i i}th
+and {i k}th element. *)
 
 
 val rotate : 'a list -> int -> 'a list
-(** Rotate a list N places to the left. *)
+(** Rotate a list {i N} places to the left. *)
 
 
 val remove_at : int -> 'a list -> 'a list
-(** Remove the kth element from a list. *)
+(** Remove the {i k}th element from a list. *)
 
 
 val insert_at : 'a -> int -> 'a list -> 'a list
@@ -93,7 +94,7 @@ val rand_select : 'a list -> int -> 'a list
 
 
 val lotto_select : int -> int -> int list
-(** Draws n different random numbers from the set 1..m. *)
+(** Draws {i n} different random numbers from the set {i 1..m}. *)
 
 
 val permutation : 'a list -> 'a list
@@ -101,7 +102,7 @@ val permutation : 'a list -> 'a list
 
 
 val extract : int -> 'a list -> 'a list list
-(** Generates the combinations of k distinct objects chosen from the n elements of a list. *)
+(** Generates the combinations of {i k} distinct objects chosen from the {i n} elements of a list. *)
 
 
 val group : 'a list -> int list -> 'a list list list
@@ -169,7 +170,7 @@ val table : string list -> bool_expr -> ((string * bool) list * bool) list
 
 
 val gray : int -> string list
-(** An n-bit Gray code construction *)
+(** An {i n}-bit Gray code construction *)
 
 
 val huffman : (string * int) list -> (string * string) list
@@ -214,3 +215,7 @@ val at_level : 'a Binary_tree.t -> int -> 'a list
 
 val complete_binary_tree : 'a list -> 'a Binary_tree.t
 (** Construct a complete binary tree. *)
+
+
+val queens_positions : int -> int list list
+(** Places {i n} queens on a chessboard so that no two queens are attacking each other. *)
