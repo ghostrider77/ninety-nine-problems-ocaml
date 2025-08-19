@@ -217,5 +217,11 @@ val complete_binary_tree : 'a list -> 'a Binary_tree.t
 (** Construct a complete binary tree. *)
 
 
+val layout_binary_tree_1 : 'a Binary_tree.t -> ('a * (int * int)) Binary_tree.t
+(** In this layout strategy, the position of a node {i v} is obtained by the following two rules:
+    - {i x(v)} is equal to the position of the node {i v} in the inorder sequence;
+    - {i y(v)} is equal to the depth of the node {i v} in the tree. *)
+
+
 val queens_positions : int -> int list list
 (** Places {i n} queens on a chessboard so that no two queens are attacking each other. *)

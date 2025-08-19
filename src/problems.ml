@@ -502,6 +502,17 @@ let complete_binary_tree xs =
   construct xs
 
 
+let layout_binary_tree_1 tree =
+  let open Binary_tree in
+  let rec construct depth x = function
+    | Empty -> (Empty, x)
+    | Node (v, l, r) ->
+        let left, x' = construct (depth + 1) x l in
+        let right, x'' = construct (depth + 1) (x' + 1) r in
+        (Node ((v, (x', depth)), left, right), x'') in
+  fst @@ construct 1 1 tree
+
+
 let queens_positions n =
   let extend column ps =
     let is_suitable row =

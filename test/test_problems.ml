@@ -386,6 +386,15 @@ let test_complete_binary_tree _ =
   assert_equal (Node ('x', Empty, Empty)) (Problems.complete_binary_tree ['x']);
   assert_equal (Node ('a', Node ('b', Empty, Empty), Empty)) (Problems.complete_binary_tree ['a'; 'b'])
 
+let test_layout_binary_tree_1 _ =
+  let open Binary_tree in
+  let tree = Node ("x", Node ("y", Empty, Node ("a", Empty, Empty)), Node ("z", Empty, Empty)) in
+  let expected = Node (("x", (3, 1)),
+    Node (("y", (1, 2)), Empty, Node (("a", (2, 3)), Empty, Empty)),
+    Node (("z", (4, 2)), Empty, Empty)) in
+  assert_equal Empty (Problems.layout_binary_tree_1 Empty);
+  assert_equal expected (Problems.layout_binary_tree_1 tree)
+
 
 let test_queens_positions _ =
   assert_equal [[1]] (Problems.queens_positions 1);
@@ -451,6 +460,7 @@ let suite =
     "test_collecting_nodes_at_given_level" >:: test_collecting_nodes_at_given_level;
     "test_complete_binary_tree" >:: test_complete_binary_tree;
     "test_queens_positions" >:: test_queens_positions;
+    "test_binary_tree_layout_1" >:: test_layout_binary_tree_1;
   ]
 
 
