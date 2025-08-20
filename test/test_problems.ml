@@ -403,6 +403,16 @@ let test_queens_positions _ =
   assert_equal [[3; 1; 4; 2]; [2; 4; 1; 3]] (Problems.queens_positions 4)
 
 
+let test_string_representation _ =
+  let open Binary_tree in
+  let tree =
+    let leaf x = Node (x, Empty, Empty) in
+    (Node ('a', Node ('b', leaf 'd', leaf 'e'), Node ('c', Empty, Node ('f', leaf 'g', Empty)))) in
+  assert_equal "" (Problems.string_of_tree Empty);
+  assert_equal "a" (Problems.string_of_tree @@ Node ('a', Empty, Empty));
+  assert_equal "a(b(d,e),c(,f(g,)))" (Problems.string_of_tree tree)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -461,6 +471,7 @@ let suite =
     "test_complete_binary_tree" >:: test_complete_binary_tree;
     "test_queens_positions" >:: test_queens_positions;
     "test_binary_tree_layout_1" >:: test_layout_binary_tree_1;
+    "test_string_representation" >:: test_string_representation;
   ]
 
 

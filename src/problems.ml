@@ -513,6 +513,18 @@ let layout_binary_tree_1 tree =
   fst @@ construct 1 1 tree
 
 
+let string_of_tree tree =
+  let open Binary_tree in
+  let rec create = function
+    | Empty -> ""
+    | Node (v, Empty, Empty) -> String.make 1 v
+    | Node (v, l, r) ->
+        let left = create l in
+        let right = create r in
+        Printf.sprintf "%c(%s,%s)" v left right in
+  create tree
+
+
 let queens_positions n =
   let extend column ps =
     let is_suitable row =

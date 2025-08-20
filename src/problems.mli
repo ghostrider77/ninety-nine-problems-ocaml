@@ -223,5 +223,9 @@ val layout_binary_tree_1 : 'a Binary_tree.t -> ('a * (int * int)) Binary_tree.t
     - {i y(v)} is equal to the depth of the node {i v} in the tree. *)
 
 
+val string_of_tree : char Binary_tree.t -> string
+(** Generates string representation of a tree. *)
+
+
 val queens_positions : int -> int list list
 (** Places {i n} queens on a chessboard so that no two queens are attacking each other. *)
