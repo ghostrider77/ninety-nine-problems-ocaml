@@ -197,6 +197,10 @@ val hbal_tree : int -> char Binary_tree.t list
 (** Constructs height-balanced binary trees. *)
 
 
+(* val hbal_tree_nodes : int -> char Binary_tree.t list *)
+(** Constructs height-balanced binary trees with a given number of nodes. *)
+
+
 val count_leaves : 'a Binary_tree.t -> int
 (** Counts the leaves of a binary tree *)
 
@@ -223,8 +227,18 @@ val layout_binary_tree_1 : 'a Binary_tree.t -> ('a * (int * int)) Binary_tree.t
     - {i y(v)} is equal to the depth of the node {i v} in the tree. *)
 
 
+(* val layout_binary_tree_2 : 'a Binary_tree.t -> ('a * (int * int)) Binary_tree.t *)
+(** In this layout strategy, the position of a node {i v} is obtained by the following two rules:
+    - On a given level, the horizontal distance between neighbouring nodes is constant;
+    - {i y(v)} is still equal to the depth of the node {i v} in the tree *)
+
+
 val string_of_tree : char Binary_tree.t -> string
 (** Generates string representation of a tree. *)
+
+
+(* val tree_of_string : string -> char Binary_tree.t *)
+(** Generates tree from its string representation. *)
 
 
 val queens_positions : int -> int list list

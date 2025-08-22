@@ -374,14 +374,14 @@ let gray n =
 let huffman frequencies =
   let open Code_tree in
   let encode fs =
-    let rec aux queue =
-      if CodeTreeSet.cardinal queue <= 1 then CodeTreeSet.min_elt queue
+    let rec aux heap =
+      if CodeTreeSet.cardinal heap <= 1 then CodeTreeSet.min_elt heap
       else
-        let t1 = CodeTreeSet.min_elt queue in
-        let queue' = CodeTreeSet.remove t1 queue in
-        let t2 = CodeTreeSet.min_elt queue' in
-        let queue'' = CodeTreeSet.remove t2 queue' in
-        aux (CodeTreeSet.add (merge t1 t2) queue'') in
+        let t1 = CodeTreeSet.min_elt heap in
+        let heap' = CodeTreeSet.remove t1 heap in
+        let t2 = CodeTreeSet.min_elt heap' in
+        let heap'' = CodeTreeSet.remove t2 heap' in
+        aux (CodeTreeSet.add (merge t1 t2) heap'') in
     aux (List.fold_left (fun acc (name, weight) -> CodeTreeSet.add (Leaf {name; weight}) acc) CodeTreeSet.empty fs) in
   let tree = encode frequencies in
   traverse tree
