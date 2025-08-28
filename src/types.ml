@@ -13,3 +13,16 @@ type bool_expr =
   | Not of bool_expr
   | And of bool_expr * bool_expr
   | Or of bool_expr * bool_expr
+
+
+type cell = {x : int; y : int}
+
+
+module CellMap = Map.Make(
+  struct
+    type t = cell
+    let compare = compare
+  end)
+
+
+module CharSet = Set.Make(Char)

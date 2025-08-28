@@ -243,3 +243,20 @@ val string_of_tree : char Binary_tree.t -> string
 
 val queens_positions : int -> int list list
 (** Places {i n} queens on a chessboard so that no two queens are attacking each other. *)
+
+
+val sudoku : string -> string
+(** Solves a sudoku puzzle.
+    The input is expected to be a string like this one:
+    {v
+    .  .  4 | 8  .  . | .  1  7
+    6  7  . | 9  .  . | .  .  .
+    5  .  8 | .  3  . | .  .  4
+    --------+---------+--------
+    3  .  . | 7  4  . | 1  .  .
+    .  6  9 | .  .  . | 7  8  .
+    .  .  1 | .  6  9 | .  .  5
+    --------+---------+--------
+    1  .  . | .  8  . | 3  .  6
+    .  .  . | .  .  6 | .  9  1
+    2  4  . | .  .  1 | 5  .  . v} *)

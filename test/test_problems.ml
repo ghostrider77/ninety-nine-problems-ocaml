@@ -413,6 +413,34 @@ let test_string_representation _ =
   assert_equal "a(b(d,e),c(,f(g,)))" (Problems.string_of_tree tree)
 
 
+let test_sudoku_solver _ =
+  let puzzle =
+    ".  .  4 | 8  .  . | .  1  7
+     6  7  . | 9  .  . | .  .  .
+     5  .  8 | .  3  . | .  .  4
+     --------+---------+--------
+     3  .  . | 7  4  . | 1  .  .
+     .  6  9 | .  .  . | 7  8  .
+     .  .  1 | .  6  9 | .  .  5
+     --------+---------+--------
+     1  .  . | .  8  . | 3  .  6
+     .  .  . | .  .  6 | .  9  1
+     2  4  . | .  .  1 | 5  .  ." in
+  let expected =
+    "9  3  4 | 8  2  5 | 6  1  7\n" ^
+    "6  7  2 | 9  1  4 | 8  5  3\n" ^
+    "5  1  8 | 6  3  7 | 9  2  4\n" ^
+    "--------+---------+--------\n" ^
+    "3  2  5 | 7  4  8 | 1  6  9\n" ^
+    "4  6  9 | 1  5  3 | 7  8  2\n" ^
+    "7  8  1 | 2  6  9 | 4  3  5\n" ^
+    "--------+---------+--------\n" ^
+    "1  9  7 | 5  8  2 | 3  4  6\n" ^
+    "8  5  3 | 4  7  6 | 2  9  1\n" ^
+    "2  4  6 | 3  9  1 | 5  7  8" in
+  assert_equal expected (Problems.sudoku puzzle)
+
+
 let suite =
   "Problems Tests" >::: [
     "test_last" >:: test_last;
@@ -472,6 +500,7 @@ let suite =
     "test_queens_positions" >:: test_queens_positions;
     "test_binary_tree_layout_1" >:: test_layout_binary_tree_1;
     "test_string_representation" >:: test_string_representation;
+    "test_sudoku_solver" >:: test_sudoku_solver;
   ]
 
 

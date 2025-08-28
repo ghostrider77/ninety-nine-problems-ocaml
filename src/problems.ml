@@ -536,3 +536,11 @@ let queens_positions n =
     if k = 0 then acc
     else place_queen (k - 1) (List.concat_map (extend k) acc) in
   place_queen n [[]]
+
+
+let sudoku puzzle =
+  let open Sudoku in
+  let board = Solver.of_string puzzle in
+  match Solver.solve board with
+    | None -> "Cannot be solved"
+    | Some solution -> Solver.to_string solution
