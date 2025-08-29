@@ -1,12 +1,5 @@
 open Types
 
-module CodeTreeSet = Set.Make(
-  struct
-    type t = Code_tree.t
-    let compare = Code_tree.compare
-  end)
-module StringMap = Map.Make(String)
-
 
 let rec last = function
   | [] -> None

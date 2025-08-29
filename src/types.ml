@@ -26,3 +26,11 @@ module CellMap = Map.Make(
 
 
 module CharSet = Set.Make(Char)
+
+
+module CodeTreeSet = Set.Make(
+  struct
+    type t = Code_tree.t
+    let compare = Code_tree.compare
+  end)
+module StringMap = Map.Make(String)
