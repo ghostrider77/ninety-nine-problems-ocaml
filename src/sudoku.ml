@@ -39,9 +39,9 @@ end = struct
         let square = get_values_in_square board cell in
         CharSet.elements (CharSet.diff valid_values (CharSet.union (CharSet.union row col) square)) in
     board
-      |> CellMap.filter (fun _ v -> v = '.')
-      |> CellMap.bindings
-      |> List.map (fun (cell, _) -> (cell, possible_values cell))
+      |> CellMap.to_seq
+      |> Seq.filter_map (fun (cell, v) -> if v = '.' then Some (cell, possible_values cell) else None)
+      |> List.of_seq
       |> List.sort (fun (_, vs1) (_, vs2) -> List.compare_lengths vs1 vs2)
 
 
